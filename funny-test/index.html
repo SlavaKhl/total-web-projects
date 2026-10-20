@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Very Serious Website</title>
+  <style>
+    :root {
+      --bg: #fff8e7;
+      --ink: #2b2118;
+      --accent: #ff5a5f;
+      --accent-2: #2ec4b6;
+      --card: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Comic Sans MS", "Comic Neue", "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 32px 16px;
+      overflow-x: hidden;
+    }
+    h1 { font-size: clamp(28px, 7vw, 52px); margin: 0 0 8px; }
+    .sub { font-size: 18px; margin: 0 0 28px; opacity: .75; }
+    .cat {
+      font-size: 90px;
+      display: inline-block;
+      animation: wobble 2.5s ease-in-out infinite;
+      cursor: pointer;
+      user-select: none;
+    }
+    @keyframes wobble {
+      0%, 100% { transform: rotate(-8deg); }
+      50% { transform: rotate(8deg); }
+    }
+    .card {
+      background: var(--card);
+      border: 3px solid var(--ink);
+      border-radius: 18px;
+      box-shadow: 6px 6px 0 var(--ink);
+      padding: 24px;
+      max-width: 520px;
+      width: 100%;
+      margin: 20px 0;
+    }
+    .arena {
+      position: relative;
+      height: 220px;
+      max-width: 520px;
+      width: 100%;
+      margin: 10px 0 20px;
+    }
+    button {
+      font: inherit;
+      font-size: 18px;
+      font-weight: bold;
+      border: 3px solid var(--ink);
+      border-radius: 12px;
+      padding: 12px 22px;
+      cursor: pointer;
+      box-shadow: 4px 4px 0 var(--ink);
+      transition: transform .1s;
+    }
+    button:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+    #danger {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--accent);
+      color: #fff;
+      transition: left .25s, top .25s;
+    }
+    #joke-btn { background: var(--accent-2); color: var(--ink); }
+    #joke { min-height: 60px; font-size: 20px; margin: 16px 0 0; }
+    #msg { font-size: 18px; min-height: 28px; }
+    footer { margin-top: auto; padding-top: 30px; font-size: 14px; opacity: .6; }
+    .confetti {
+      position: fixed;
+      top: -20px;
+      font-size: 24px;
+      pointer-events: none;
+      animation: fall linear forwards;
+    }
+    @keyframes fall { to { transform: translateY(110vh) rotate(720deg); } }
+  </style>
+</head>
+<body>
+  <div class="cat" id="cat" title="Click the cat">🐱</div>
+  <h1>The Very Serious Website</h1>
+  <p class="sub">Nothing funny happens here. Absolutely nothing.</p>
+
+  <p id="msg">Whatever you do, do NOT press the red button.</p>
+  <div class="arena" id="arena">
+    <button id="danger">Do NOT press</button>
+  </div>
+
+  <div class="card">
+    <strong>Serious joke of the day</strong>
+    <p id="joke">Press the button for a very serious joke.</p>
+    <button id="joke-btn">Tell me a joke 😐</button>
+  </div>
+
+  <footer>Made with ❤️ by Slava · test site #1</footer>
+
+  <script>
+    const jokes = [
+      "Why do programmers prefer dark mode? Because light attracts bugs. 🐛",
+      "I told my computer I needed a break. It said: 'No problem, I'll go to sleep.' 💤",
+      "Why was the website cold? It left its Windows open. 🪟",
+      "My cat thinks this website is serious. My cat is wrong. 🐱",
+      "How do you comfort a JavaScript developer? You console them. 🫂",
+      "Why did the HTML tag go to therapy? It had too many issues with closure. 🏷️",
+      "There are 10 kinds of people: those who understand binary and those who don't. 🤓",
+      "The internet is 50% cats. This website is doing its part. 😸"
+    ];
+    const excuses = [
+      "Nope! 😜", "Too slow! 🐢", "Not today! 🙅", "Try again! 😂",
+      "I said DO NOT! 😱", "Missed me! 💨", "Almost... 🤏"
+    ];
+
+    const arena = document.getElementById("arena");
+    const danger = document.getElementById("danger");
+    const msg = document.getElementById("msg");
+    let escapes = 0;
+
+    // The red button runs away from the mouse (gives up after 7 tries).
+    function runAway() {
+      if (escapes >= 7) return;
+      escapes++;
+      const maxX = arena.clientWidth - danger.offsetWidth;
+      const maxY = arena.clientHeight - danger.offsetHeight;
+      danger.style.transform = "none";
+      danger.style.left = Math.random() * maxX + "px";
+      danger.style.top = Math.random() * maxY + "px";
+      msg.textContent = excuses[Math.floor(Math.random() * excuses.length)];
+    }
+    danger.addEventListener("mouseenter", runAway);
+
+    danger.addEventListener("click", () => {
+      msg.textContent = "You pressed it! 🎉 Now the website is officially funny.";
+      danger.textContent = "Oh no 🙈";
+      confetti();
+    });
+
+    document.getElementById("joke-btn").addEventListener("click", () => {
+      document.getElementById("joke").textContent =
+        jokes[Math.floor(Math.random() * jokes.length)];
+    });
+
+    document.getElementById("cat").addEventListener("click", () => {
+      msg.textContent = "Meow! 🐾 (The cat says hello.)";
+      confetti("🐟");
+    });
+
+    function confetti(symbol) {
+      const items = symbol ? [symbol] : ["🎉", "🎈", "⭐", "🍕", "😂", "🐱"];
+      for (let i = 0; i < 40; i++) {
+        const el = document.createElement("div");
+        el.className = "confetti";
+        el.textContent = items[Math.floor(Math.random() * items.length)];
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.animationDuration = 2 + Math.random() * 2 + "s";
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 4500);
+      }
+    }
+  </script>
+</body>
+</html>
