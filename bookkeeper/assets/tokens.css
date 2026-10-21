@@ -1,0 +1,39 @@
+/* NIKA LAT design tokens. Source of truth: brandbook/index.html */
+:root {
+  /* Brand colours */
+  --nl-ink-900: #0F1B2D;   /* Ledger Ink: text, dark surfaces, primary buttons */
+  --nl-ink-700: #23324A;
+  --nl-ink-500: #5B6577;   /* secondary text */
+  --nl-ink-300: #A9B1BD;
+  --nl-red-600: #C8102E;   /* Nika Red: logo, accents, focus. Not for errors or numbers */
+  --nl-red-500: #EF4B62;   /* red on dark backgrounds */
+  --nl-red-050: #FCEDEF;
+  --nl-paper:   #F7F5F0;   /* Paper: page sections */
+  --nl-paper-2: #EFEBE3;
+  --nl-white:   #FFFFFF;
+  --nl-line:    #E3DED4;
+  --nl-green-600: #1F7A5C; /* Balance Green: success, "done" states */
+  --nl-green-050: #E8F3EE;
+  --nl-amber-600: #A8650B; /* warnings, deadlines */
+
+  /* Typography */
+  --nl-font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --nl-font-ui: "Onest", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  --nl-fs-hero: clamp(2.4rem, 5.2vw, 4.25rem);
+  --nl-fs-h2: clamp(1.85rem, 3.4vw, 2.75rem);
+  --nl-fs-h3: 1.3rem;
+  --nl-fs-body: 1.0625rem;
+  --nl-fs-small: .875rem;
+  --nl-lh-body: 1.65;
+
+  /* Space (4px grid) */
+  --nl-s1: 4px; --nl-s2: 8px; --nl-s3: 12px; --nl-s4: 16px; --nl-s5: 24px;
+  --nl-s6: 32px; --nl-s7: 48px; --nl-s8: 64px; --nl-s9: 96px; --nl-s10: 128px;
+
+  /* Shape and depth */
+  --nl-radius-s: 8px; --nl-radius-m: 14px; --nl-radius-l: 22px;
+  --nl-shadow-1: 0 1px 2px rgba(15,27,45,.06), 0 2px 8px rgba(15,27,45,.05);
+  --nl-shadow-2: 0 10px 30px rgba(15,27,45,.10), 0 2px 6px rgba(15,27,45,.06);
+  --nl-container: 1200px;
+  --nl-ease: cubic-bezier(.2,.7,.2,1);
+}
