@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NIKA LAT Brand Book</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  .bb-nav { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--nl-line); }
+  .bb-nav .container { display: flex; gap: 6px 18px; flex-wrap: wrap; align-items: center; min-height: 60px; font-size: .9rem; }
+  .bb-nav a { text-decoration: none; color: var(--nl-ink-500); }
+  .bb-nav a:hover { color: var(--nl-red-600); }
+  .bb-nav b { margin-right: auto; color: var(--nl-ink-900); }
+  .bb h2 { margin-top: 0; }
+  .bb section { padding-block: 72px; border-bottom: 1px solid var(--nl-line); }
+  .swatches { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+  .sw { border-radius: var(--nl-radius-m); overflow: hidden; border: 1px solid var(--nl-line); background: #fff; }
+  .sw i { display: block; height: 110px; }
+  .sw div { padding: 14px 16px; font-size: .88rem; }
+  .sw b { display: block; font-size: 1rem; }
+  .sw code { color: var(--nl-ink-500); }
+  .type-row { display: grid; gap: 8px 32px; padding: 22px 0; border-bottom: 1px dashed var(--nl-line); }
+  @media (min-width: 800px) { .type-row { grid-template-columns: 220px 1fr; align-items: baseline; } }
+  .type-row small { color: var(--nl-ink-500); font-size: .82rem; }
+  .logo-box { border-radius: var(--nl-radius-l); padding: 48px; display: grid; place-items: center; min-height: 220px; }
+  .do, .dont { border-radius: var(--nl-radius-m); padding: 22px 24px; }
+  .do { background: var(--nl-green-050); } .dont { background: var(--nl-red-050); }
+  .do h3 { color: var(--nl-green-600); } .dont h3 { color: var(--nl-red-600); }
+  .do ul, .dont ul { margin: 0; padding-left: 20px; }
+  .do li, .dont li { margin: 6px 0; }
+  table.spec { width: 100%; border-collapse: collapse; font-size: .95rem; }
+  table.spec th, table.spec td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--nl-line); vertical-align: top; }
+  table.spec th { font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--nl-ink-500); }
+  code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .88em; }
+  .demo { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .space-bar { height: 14px; background: var(--nl-red-600); border-radius: 3px; }
+</style>
+</head>
+<body class="bb">
+<nav class="bb-nav"><div class="container">
+  <b>NIKA LAT · Брендбук v1.0</b>
+  <a href="#essence">Суть бренда</a><a href="#logo">Логотип</a><a href="#color">Цвет</a><a href="#type">Шрифты</a><a href="#layout">Сетка</a><a href="#ui">Компоненты</a><a href="#imagery">Иконки и изображения</a><a href="#voice">Тон текста</a><a href="#web">Правила сайта</a><a href="../lv/index.html">← Сайт</a>
+</div></nav>
+
+<header class="page-hero"><div class="container">
+  <span class="eyebrow">Брендбук · октябрь 2026</span>
+  <h1>NIKA LAT: визуальный и словесный стиль</h1>
+  <p class="lead">Правила для сайта и всех будущих обновлений, исправлений и новых материалов. Все значения уже заданы в коде: <code>assets/tokens.css</code> — единственный источник цветов, шрифтов и отступов. Меняете значение там, и меняется весь сайт.</p>
+</div></header>
+
+<main class="container">
+
+<section id="essence">
+  <span class="eyebrow">01 · Суть бренда</span>
+  <h2>Надежность, проверенная временем</h2>
+  <div class="split">
+    <div>
+      <p class="lead">NIKA LAT работает с 31 марта 1993 года. Это редкий для рынка Риги случай: компания и ведет бухгалтерию клиентов, и сама разрабатывает бухгалтерские программы. Бренд строится на этом: мы знаем бухгалтерию изнутри.</p>
+      <p><b>Обещание бренда:</b> «Бухгалтерия, на которую можно положиться» / «Grāmatvedība, uz kuru var paļauties».</p>
+    </div>
+    <div class="features">
+      <div class="feature"><span class="feature__num">01</span><div><h3>Опыт</h3><p>С 1993 года. Говорим фактами, а не обещаниями.</p></div></div>
+      <div class="feature"><span class="feature__num">02</span><div><h3>Точность</h3><p>Собственный программный комплекс, системный учет.</p></div></div>
+      <div class="feature"><span class="feature__num">03</span><div><h3>Конфиденциальность</h3><p>Этика и неразглашение — основа работы.</p></div></div>
+      <div class="feature"><span class="feature__num">04</span><div><h3>Два языка</h3><p>Латышский и русский — на равных.</p></div></div>
+    </div>
+  </div>
+  <h3 style="margin-top:40px">Позиционирование относительно конкурентов</h3>
+  <p class="muted" style="max-width:75ch">Сайты конкурентов в Риге (Krisvel, AB ways, FinBrok, Folio) похожи друг на друга: стоковые фото, общий заголовок «Бухгалтерские услуги в Риге», мало доказательств. NIKA LAT выделяется тремя вещами, которых у них нет: 30+ лет истории, собственные программы и бухгалтер, юрист и ревизор в одной компании. Подробности — в <a href="../docs/competitor-analysis.md">анализе конкурентов</a>.</p>
+</section>
+
+<section id="logo">
+  <span class="eyebrow">02 · Логотип</span>
+  <h2>Монограмма NL и надпись NIKA LAT</h2>
+  <p class="lead">Обновленная версия исторического логотипа: тот же наклонный красный знак NL, но сплошной, без контура, и с современной надписью. Узнаваемость сохраняется, вид становится чище.</p>
+  <div class="grid grid--3" style="margin-top:28px">
+    <div class="logo-box" style="background:#fff;border:1px solid var(--nl-line)"><img src="../assets/logo.svg" alt="Логотип NIKA LAT на светлом фоне" width="310" height="56"></div>
+    <div class="logo-box" style="background:var(--nl-ink-900)"><span class="brand" style="color:#fff"><svg class="brand__mark" viewBox="0 0 76 52" aria-hidden="true"><g transform="translate(2 2) skewX(-12)"><path fill="#EF4B62" d="M8 48V0h10l16 28V0h10v48H34L18 20v28zM50 0h10v38h18v10H50z"/></g></svg><span><span class="brand__name">NIKA LAT</span><span class="brand__tag" style="color:#A9B1BD">Бухгалтерия с 1993</span></span></span></div>
+    <div class="logo-box" style="background:var(--nl-paper)"><img src="../assets/favicon.svg" alt="Иконка сайта NIKA LAT" width="96" height="96"></div>
+  </div>
+  <div class="grid grid--2" style="margin-top:28px">
+    <div class="do"><h3>Правильно</h3><ul>
+      <li>Охранное поле вокруг логотипа — не меньше высоты буквы N × 0,5.</li>
+      <li>Минимальная ширина: 120 px на экране, 30 мм в печати. Меньше — только знак NL.</li>
+      <li>На светлом фоне знак красный <code>#C8102E</code>, надпись <code>#0F1B2D</code>.</li>
+      <li>На темном фоне знак <code>#EF4B62</code>, надпись белая.</li>
+      <li>Подпись под надписью меняется по языку: «Grāmatvedība kopš 1993» / «Бухгалтерия с 1993».</li>
+    </ul></div>
+    <div class="dont"><h3>Нельзя</h3><ul>
+      <li>Менять цвета знака, добавлять тени, градиенты или контур.</li>
+      <li>Растягивать, сжимать или поворачивать логотип.</li>
+      <li>Ставить логотип на фото или пестрый фон без подложки.</li>
+      <li>Использовать старый JPG-логотип в новых материалах.</li>
+    </ul></div>
+  </div>
+  <p class="note" style="margin-top:24px">Файлы: <code>assets/logo.svg</code> (полный), <code>assets/favicon.svg</code> (иконка). На сайте логотип собран из SVG-знака и HTML-текста, чтобы надпись была в фирменном шрифте и переводилась.</p>
+</section>
+
+<section id="color">
+  <span class="eyebrow">03 · Цвет</span>
+  <h2>Палитра «Чернила, бумага и печать»</h2>
+  <p class="lead">Темно-синий «чернильный» цвет дает серьезность и доверие, теплый «бумажный» фон — спокойствие, красный из исторического логотипа — узнаваемость. Красного мало: примерно 5% площади.</p>
+  <div class="swatches" style="margin-top:28px">
+    <div class="sw"><i style="background:#0F1B2D"></i><div><b>Ledger Ink</b><code>--nl-ink-900 · #0F1B2D</code><br>Текст, темные блоки, основные кнопки</div></div>
+    <div class="sw"><i style="background:#23324A"></i><div><b>Ink 700</b><code>--nl-ink-700 · #23324A</code><br>Навигация, вторичный текст</div></div>
+    <div class="sw"><i style="background:#5B6577"></i><div><b>Ink 500</b><code>--nl-ink-500 · #5B6577</code><br>Подписи, описания</div></div>
+    <div class="sw"><i style="background:#C8102E"></i><div><b>Nika Red</b><code>--nl-red-600 · #C8102E</code><br>Логотип, акценты, фокус, hover</div></div>
+    <div class="sw"><i style="background:#EF4B62"></i><div><b>Red on dark</b><code>--nl-red-500 · #EF4B62</code><br>Красный на темном фоне</div></div>
+    <div class="sw"><i style="background:#F7F5F0"></i><div><b>Paper</b><code>--nl-paper · #F7F5F0</code><br>Фон чередующихся секций</div></div>
+    <div class="sw"><i style="background:#E3DED4"></i><div><b>Line</b><code>--nl-line · #E3DED4</code><br>Рамки и разделители</div></div>
+    <div class="sw"><i style="background:#1F7A5C"></i><div><b>Balance Green</b><code>--nl-green-600 · #1F7A5C</code><br>Успех, «готово», галочки</div></div>
+    <div class="sw"><i style="background:#A8650B"></i><div><b>Deadline Amber</b><code>--nl-amber-600 · #A8650B</code><br>Предупреждения, сроки</div></div>
+  </div>
+  <table class="spec" style="margin-top:32px">
+    <thead><tr><th>Пара</th><th>Контраст</th><th>Где можно</th></tr></thead>
+    <tbody>
+      <tr><td>Ink 900 на белом</td><td>17,3 : 1</td><td>Любой текст</td></tr>
+      <tr><td>Ink 500 на белом</td><td>5,9 : 1</td><td>Обычный текст (AA)</td></tr>
+      <tr><td>Nika Red на белом</td><td>5,9 : 1</td><td>Текст от 14 px, иконки, линии</td></tr>
+      <tr><td>Белый на Ink 900</td><td>17,3 : 1</td><td>Любой текст</td></tr>
+      <tr><td>Red 500 на Ink 900</td><td>4,8 : 1</td><td>Мелкие заголовки, иконки</td></tr>
+    </tbody>
+  </table>
+  <p class="note" style="margin-top:20px"><b>Важно для бухгалтерии:</b> красный — цвет бренда, а не «минус». Не красьте им цифры, суммы и сообщения об ошибках, чтобы не путать клиента. Для ошибок в формах используйте рамку Ink 900 и понятный текст.</p>
+</section>
+
+<section id="type">
+  <span class="eyebrow">04 · Шрифты</span>
+  <h2>Source Serif 4 + Onest</h2>
+  <p class="lead">Оба шрифта бесплатные (SIL OFL), поддерживают латышскую диакритику (ā, č, ē, ģ, ī, ķ, ļ, ņ, š, ū, ž) и кириллицу. Подключены локально из <code>assets/fonts/</code>, без внешних сервисов.</p>
+  <div class="type-row"><small>H1 · Source Serif 4 600<br>clamp(2.4–4.25rem), lh 1.12</small><span style="font-family:var(--nl-font-display);font-size:3rem;font-weight:600;line-height:1.1">Grāmatvedība kopš 1993</span></div>
+  <div class="type-row"><small>H2 · Source Serif 4 600<br>clamp(1.85–2.75rem)</small><span style="font-family:var(--nl-font-display);font-size:2.2rem;font-weight:600">Бухгалтерия изнутри</span></div>
+  <div class="type-row"><small>Акцент · Source Serif 4 italic<br>одно слово в заголовке, красный</small><span style="font-family:var(--nl-font-display);font-size:2.2rem;font-style:italic;color:var(--nl-red-600)">var paļauties</span></div>
+  <div class="type-row"><small>H3 · Onest 650 · 1.3rem</small><span style="font-size:1.3rem;font-weight:650">Gada pārskata sastādīšana</span></div>
+  <div class="type-row"><small>Текст · Onest 400 · 17px, lh 1.65</small><span>Берем на себя бухгалтерию компании полностью или только те участки, которые для вас важнее всего.</span></div>
+  <div class="type-row"><small>Надзаголовок · Onest 600<br>0.78rem, uppercase, +0.14em</small><span class="eyebrow" style="margin:0">Pakalpojumi</span></div>
+  <div class="type-row"><small>Цифры-факты · Source Serif 4</small><span style="font-family:var(--nl-font-display);font-size:2.6rem;font-weight:600">1993 · 33+ · 3 в 1</span></div>
+  <p class="muted" style="margin-top:20px">Правило: засечки — только для крупных заголовков и цифр; все интерфейсные элементы (меню, кнопки, формы, мелкий текст) — Onest. Длина строки основного текста — до 72 символов.</p>
+</section>
+
+<section id="layout">
+  <span class="eyebrow">05 · Сетка и отступы</span>
+  <h2>Шаг 4 px, контейнер 1200 px</h2>
+  <div class="split">
+    <div>
+      <table class="spec"><thead><tr><th>Токен</th><th>Значение</th><th></th></tr></thead><tbody>
+        <tr><td><code>--nl-s2</code></td><td>8 px</td><td><div class="space-bar" style="width:8px"></div></td></tr>
+        <tr><td><code>--nl-s4</code></td><td>16 px</td><td><div class="space-bar" style="width:16px"></div></td></tr>
+        <tr><td><code>--nl-s5</code></td><td>24 px</td><td><div class="space-bar" style="width:24px"></div></td></tr>
+        <tr><td><code>--nl-s6</code></td><td>32 px</td><td><div class="space-bar" style="width:32px"></div></td></tr>
+        <tr><td><code>--nl-s7</code></td><td>48 px</td><td><div class="space-bar" style="width:48px"></div></td></tr>
+        <tr><td><code>--nl-s8</code></td><td>64 px</td><td><div class="space-bar" style="width:64px"></div></td></tr>
+        <tr><td><code>--nl-s9</code></td><td>96 px</td><td><div class="space-bar" style="width:96px"></div></td></tr>
+      </tbody></table>
+    </div>
+    <div>
+      <ul class="checklist">
+        <li><span>▪</span><span>Контейнер: <code>1200px</code>, поля 16 px на телефоне и 32 px от 720 px.</span></li>
+        <li><span>▪</span><span>Вертикальный ритм секций: 56–112 px (<code>clamp</code>).</span></li>
+        <li><span>▪</span><span>Точки перелома: 420, 640, 720, 900, 960, 1040, 1100 px.</span></li>
+        <li><span>▪</span><span>Скругления: 8 / 14 / 22 px, кнопки — полностью круглые.</span></li>
+        <li><span>▪</span><span>Секции чередуются: белый → Paper → белый → темный CTA.</span></li>
+        <li><span>▪</span><span>Фирменный мотив — линии «бухгалтерской книги» в фоне первого экрана.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="ui">
+  <span class="eyebrow">06 · Компоненты</span>
+  <h2>Кнопки, карточки, формы</h2>
+  <h3 style="margin-top:28px">Кнопки</h3>
+  <div class="demo"><a class="btn btn--primary" href="#ui">Получить предложение</a><a class="btn btn--ghost" href="#ui">Наши услуги</a></div>
+  <div class="demo section--ink" style="padding:24px;border-radius:14px;margin-top:14px"><a class="btn btn--primary" href="#ui">Saņemt piedāvājumu</a><a class="btn btn--ghost" href="#ui">+371 29 238 232</a></div>
+  <p class="muted" style="margin-top:14px">Одна основная кнопка на экран. Основное действие сайта — «Получить предложение» (мастер расчета на странице «Стоимость»). Второе — звонок.</p>
+  <h3 style="margin-top:28px">Карточки</h3>
+  <div class="grid grid--3">
+    <div class="card"><span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></span><h3>Светлая карточка</h3><p>Услуга: иконка, заголовок, 1 строка описания, 3 пункта, ссылка.</p></div>
+    <div class="card card--ink"><span class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="13" rx="2"/></svg></span><h3>Темная карточка</h3><p>Только для одного выделенного элемента в ряду (программы NIKA LAT).</p></div>
+    <div class="card"><span class="tag" style="align-self:flex-start;margin-bottom:14px">NIKA LAT</span><h3>Карточка продукта</h3><p>Тег, название модуля капсом, описание.</p></div>
+  </div>
+  <h3 style="margin-top:28px">Формы</h3>
+  <p class="muted">Поля 50 px высотой, радиус 12 px, метка всегда над полем. Выбор вариантов — «чипы» вместо выпадающих списков, если вариантов до 6. Согласие на обработку данных — обязательная галочка перед отправкой.</p>
+</section>
+
+<section id="imagery">
+  <span class="eyebrow">07 · Иконки и изображения</span>
+  <h2>Линейные иконки, честные фото</h2>
+  <div class="grid grid--2">
+    <div class="do"><h3>Правильно</h3><ul>
+      <li>Иконки: линейные, 24×24, толщина 1,8 px, скругленные концы (стиль Lucide). Цвет — <code>currentColor</code>.</li>
+      <li>Иконка в квадрате 52 px с фоном <code>--nl-red-050</code>.</li>
+      <li>Фото: реальный офис и сотрудники, естественный свет, теплые тона. Обработка: легкая десатурация, без фильтров.</li>
+      <li>Иллюстрации: интерфейсные «карточки учета» в фирменных цветах, как на главной.</li>
+    </ul></div>
+    <div class="dont"><h3>Нельзя</h3><ul>
+      <li>Стоковые фото «рукопожатие», «калькулятор и очки», «улыбающийся офис».</li>
+      <li>Выдуманные отзывы, логотипы клиентов и сотрудники.</li>
+      <li>Эмодзи вместо иконок, разные стили иконок на одной странице.</li>
+    </ul></div>
+  </div>
+  <p class="note" style="margin-top:20px">Следующий шаг: сделать фотосессию сотрудников и офиса. Это главный инструмент доверия, которого не хватает и конкурентам.</p>
+</section>
+
+<section id="voice">
+  <span class="eyebrow">08 · Тон текста</span>
+  <h2>Спокойно, точно, по делу</h2>
+  <div class="grid grid--2">
+    <div>
+      <ul class="checklist">
+        <li><span>✓</span><span>Обращаемся на «вы» (LV: «jūs»), без панибратства.</span></li>
+        <li><span>✓</span><span>Короткие предложения. Один абзац — одна мысль.</span></li>
+        <li><span>✓</span><span>Факты вместо прилагательных: «с 1993 года», а не «огромный опыт».</span></li>
+        <li><span>✓</span><span>Термины — как в VID: EDS, PVN/НДС, gada pārskats/годовой отчет.</span></li>
+        <li><span>✓</span><span>Латышская и русская версии равноценны: один смысл, без сокращений в одной из них.</span></li>
+        <li><span>✓</span><span>Цены не выдумываем: «рассчитаем индивидуально», пока клиент не утвердит прайс.</span></li>
+      </ul>
+    </div>
+    <table class="spec">
+      <thead><tr><th>Так</th><th>Не так</th></tr></thead>
+      <tbody>
+        <tr><td>Подготовим годовой отчет и подадим в срок.</td><td>Мы — лучшие профессионалы рынка!</td></tr>
+        <tr><td>С 1993 года ведем учет и разрабатываем программы.</td><td>Многолетний богатый опыт.</td></tr>
+        <tr><td>Получить предложение</td><td>ЗАКАЗАТЬ УСЛУГУ СЕЙЧАС!!!</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="web" style="border-bottom:0">
+  <span class="eyebrow">09 · Правила сайта</span>
+  <h2>Как обновлять сайт</h2>
+  <table class="spec">
+    <thead><tr><th>Задача</th><th>Где менять</th></tr></thead>
+    <tbody>
+      <tr><td>Цвета, шрифты, отступы</td><td><code>assets/tokens.css</code></td></tr>
+      <tr><td>Тексты, услуги, FAQ, контакты (LV и RU)</td><td><code>_src/content.mjs</code></td></tr>
+      <tr><td>Разметка страниц и новые страницы</td><td><code>_src/build.mjs</code> (объект <code>P</code> и список <code>routes</code>)</td></tr>
+      <tr><td>Стили компонентов</td><td><code>assets/site.css</code></td></tr>
+      <tr><td>Меню, формы, мастер расчета, чат</td><td><code>assets/site.js</code></td></tr>
+      <tr><td>Пересборка после правок</td><td><code>node bookkeeper/_src/build.mjs</code></td></tr>
+    </tbody>
+  </table>
+  <ul class="checklist" style="margin-top:28px">
+    <li><span>✓</span><span>Каждая страница существует на обоих языках с одинаковым адресом: <code>/lv/…</code> и <code>/ru/…</code>. Переключатель языка ведет на ту же страницу.</span></li>
+    <li><span>✓</span><span>Доступность: контраст AA, видимый фокус (красная рамка), навигация с клавиатуры, учет <code>prefers-reduced-motion</code>.</span></li>
+    <li><span>✓</span><span>SEO: title до 60 символов, description до 160, hreflang, schema.org <code>AccountingService</code> и <code>FAQPage</code>. Перед запуском убрать <code>noindex</code> и указать боевой домен в <code>company.siteUrl</code>.</span></li>
+    <li><span>✓</span><span>Мобильная версия: нижняя панель «Позвонить / Получить предложение», без горизонтальной прокрутки на 360 px.</span></li>
+  </ul>
+</section>
+</main>
+<footer class="footer"><div class="container footer__bottom" style="border:0;padding:0"><span>© SIA “NIKA LAT” · Брендбук v1.0, октябрь 2026</span><a href="../lv/index.html">lv</a></div></footer>
+</body>
+</html>

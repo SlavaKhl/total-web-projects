@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NIKA LAT — grāmatvedība kopš 1993</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<script>
+  // Send visitors to their language: saved choice, then browser language, then Latvian.
+  (function () {
+    var l = null;
+    try { l = localStorage.getItem('nl-lang'); } catch (e) {}
+    if (!l) l = /^ru\b/i.test(navigator.language || '') ? 'ru' : 'lv';
+    location.replace((l === 'ru' ? 'ru' : 'lv') + '/index.html');
+  })();
+</script>
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;font-family:system-ui,sans-serif;background:#F7F5F0;color:#0F1B2D}a{margin:0 12px;color:#C8102E;font-weight:600}</style>
+</head>
+<body><p><a href="lv/index.html">Latviešu</a> <a href="ru/index.html">Русский</a></p></body>
+</html>
