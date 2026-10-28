@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="512" height="512" role="img" aria-label="Enkurs ar asnu">
+      <path d="M60 40C50 40 40 32 38 18C52 18 60 28 60 40z" fill="#6E9E4B"/>
+      <path d="M60 40C70 36 80 26 82 12C68 14 60 24 60 40z" fill="#A9CF7A"/>
+      <path d="M60 40V98M44 52H76M28 74Q32 100 60 100Q88 100 92 74" fill="none" stroke="#2F5233" stroke-width="7" stroke-linecap="round"/>
+      <path d="M20 80L28 66L36 78zM84 78L92 66L100 80z" fill="#2F5233"/>
+      <path d="M14 110q8-6 16 0t16 0t16 0t16 0t16 0t16 0" fill="none" stroke="#3A7CA5" stroke-width="4" stroke-linecap="round"/></svg>
