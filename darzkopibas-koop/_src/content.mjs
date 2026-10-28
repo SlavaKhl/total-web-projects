@@ -7,14 +7,15 @@ export const LANGS = ['lv', 'ru'];
 
 export const org = {
   // Legal name stays in Latvian in both languages.
-  name: 'Dārzkopības kooperatīvā sabiedrība „[[Nosaukums]]”',
-  short: 'DKS „[[Nosaukums]]”',
+  // From the Enterprise Register via company.lursoft.lv (checked 28.10.2026).
+  name: 'Dārzkopības kooperatīvā sabiedrība „Gavana”',
+  short: 'DKS „Gavana”',
   tagline: { lv: 'Dārzkopības kooperatīvā sabiedrība', ru: 'Садоводческое кооперативное общество' },
-  regNr: '[[4000000000]]',
-  founded: '[[1985]]',
-  address: '[[Dārzu iela 1]], [[Pagasts]], [[Novads]], LV-[[0000]]',
-  phone: '[[+371 20 000 000]]',
-  tel: '+37120000000',
+  regNr: '40103057883',
+  founded: '1992', // registration date in the Enterprise Register: 28.07.1992
+  address: '„Gavana 123”, Stīpnieki, Olaines pag., Olaines nov., LV-2127',
+  phone: '+371 67 341 479',
+  tel: '+37167341479',
   email: '[[valde@example.lv]]',
   emailRaw: 'valde@example.lv',
   hours: [
@@ -25,8 +26,8 @@ export const org = {
   bank: { name: '[[Banka]]', iban: '[[LV00 BANK 0000 0000 0000 0]]', swift: '[[BANKLV2X]]' },
   plots: '[[120]]',
   area: '[[18]]',
-  // Map: OpenStreetMap, free. Replace with the real coordinates.
-  map: { lat: 56.9496, lon: 24.1052 },
+  // Map: free Google Maps embed by address search (no API key needed).
+  mapQuery: 'Gavana, Stīpnieki, Olaines pagasts, Olaines novads',
   siteUrl: 'https://slavakhl.github.io/total-web-projects/darzkopibas-koop/',
 };
 

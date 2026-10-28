@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="512" height="512" role="img" aria-label="Ostas zīmogs">
+      <defs>
+        <clipPath id="d-zimogs-c"><circle cx="60" cy="60" r="38"/></clipPath>
+        <path id="d-zimogs-t" d="M60 60m-47 0a47 47 0 1 1 94 0"/>
+        <path id="d-zimogs-b" d="M60 60m-47 0a47 47 0 0 0 94 0"/>
+      </defs>
+      <circle cx="60" cy="60" r="58" fill="#2F5233"/>
+      <circle cx="60" cy="60" r="38" fill="#F7F2E7"/>
+      <g clip-path="url(#d-zimogs-c)">
+        <circle cx="84" cy="42" r="8" fill="#F2C14E"/>
+        <path d="M18 74Q46 62 70 70T102 70V100H18z" fill="#A9CF7A"/>
+        <rect x="45" y="50" width="5" height="20" fill="#8B5E3C"/>
+        <circle cx="47.5" cy="44" r="13" fill="#6E9E4B"/>
+        <circle cx="42" cy="42" r="2.6" fill="#C0392B"/><circle cx="52" cy="47" r="2.6" fill="#C0392B"/><circle cx="49" cy="37" r="2.6" fill="#C0392B"/>
+        <path d="M18 80q7-5 14 0t14 0t14 0t14 0t14 0t14 0V100H18z" fill="#3A7CA5"/>
+        <path d="M18 88q7-5 14 0t14 0t14 0t14 0t14 0t14 0" fill="none" stroke="#7FB0CF" stroke-width="2.5"/>
+      </g>
+      <text font-family="Georgia, serif" font-size="11" font-weight="700" letter-spacing="3" fill="#F7F2E7"><textPath href="#d-zimogs-t" startOffset="50%" text-anchor="middle">GAVANA</textPath></text>
+      <text font-family="system-ui, sans-serif" font-size="7.5" font-weight="600" letter-spacing="1.5" fill="#A9CF7A" dy="6"><textPath href="#d-zimogs-b" startOffset="50%" text-anchor="middle">DKS · 1992</textPath></text></svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="512" height="512" role="img" aria-label="Lapu bura">
+      <path d="M58 34C44 46 40 62 58 72z" fill="#A9CF7A"/>
+      <path d="M62 22C90 32 96 58 62 74z" fill="#6E9E4B"/>
+      <path d="M63 30Q75 50 63 70" fill="none" stroke="#A9CF7A" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M60 20V80" stroke="#2F5233" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M24 80H96L86 95H34z" fill="#8B5E3C"/>
+      <path d="M14 103q8-6 16 0t16 0t16 0t16 0t16 0t16 0" fill="none" stroke="#3A7CA5" stroke-width="4" stroke-linecap="round"/><path d="M14 112q8-6 16 0t16 0t16 0t16 0t16 0t16 0" fill="none" stroke="#7FB0CF" stroke-width="3" stroke-linecap="round"/></svg>

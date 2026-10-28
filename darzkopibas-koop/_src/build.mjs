@@ -199,7 +199,7 @@ P.home = (lang) => {
 <section class="section section--green"><div class="container stats">
   <div><b>${O.plots}</b><span>${x('dārzu gabali', 'садовых участков')}</span></div>
   <div><b>${O.area} ${x('ha', 'га')}</b><span>${x('kopējā teritorija', 'общая территория')}</span></div>
-  <div><b>${O.founded}</b><span>${x('dibināšanas gads', 'год основания')}</span></div>
+  <div><b>${O.founded}</b><span>${x('reģistrēta', 'год регистрации')}</span></div>
 </div></section>`,
   });
 };
@@ -217,8 +217,8 @@ P.about = (lang) => {
   <div class="prose">
     <h2>${x('Mūsu vēsture', 'Наша история')}</h2>
     <p>${x(
-      `Dārzkopības sabiedrība dibināta ${O.founded}. gadā. [[Šeit būs īss stāsts par kooperatīva vēsturi: kā radās dārzi, kas tika uzbūvēts, kādi bijuši svarīgākie notikumi.]]`,
-      `Садоводческое общество основано в ${O.founded} году. [[Здесь будет краткая история кооператива: как появились сады, что было построено, главные события.]]`)}</p>
+      `Kooperatīvā sabiedrība reģistrēta ${O.founded}. gadā. [[Šeit būs īss stāsts par kooperatīva vēsturi: kā radās dārzi, kas tika uzbūvēts, kādi bijuši svarīgākie notikumi.]]`,
+      `Кооператив зарегистрирован в ${O.founded} году. [[Здесь будет краткая история кооператива: как появились сады, что было построено, главные события.]]`)}</p>
     <p>${x(
       `Šodien kooperatīva teritorijā ir ${O.plots} dārzu gabali ${O.area} ha platībā. Daudzi biedri dārzā pavada visu vasaru, citi te pastāvīgi dzīvo.`,
       `Сегодня на территории кооператива ${O.plots} садовых участков общей площадью ${O.area} га. Многие проводят в саду всё лето, а некоторые живут здесь постоянно.`)}</p>
@@ -236,7 +236,7 @@ P.about = (lang) => {
       <dt>${x('Nosaukums', 'Название')}</dt><dd>${O.name}</dd>
       <dt>${UI[lang].reg}</dt><dd>${O.regNr}</dd>
       <dt>${x('Juridiskā adrese', 'Юридический адрес')}</dt><dd>${O.address}</dd>
-      <dt>${x('Dibināta', 'Основано')}</dt><dd>${O.founded}</dd>
+      <dt>${x('Reģistrēta', 'Зарегистрирован')}</dt><dd>${O.founded}</dd>
       <dt>${x('Dārzu gabali', 'Участков')}</dt><dd>${O.plots}</dd>
     </dl>
   </aside>
@@ -344,9 +344,7 @@ P.members = (lang) => {
 
 P.contacts = (lang) => {
   const x = (lv, ru) => (lang === 'lv' ? lv : ru);
-  const { lat, lon } = O.map;
-  const d = 0.006;
-  const bbox = [lon - d * 2, lat - d, lon + d * 2, lat + d].map((n) => n.toFixed(4)).join('%2C');
+  const q = encodeURIComponent(O.mapQuery);
   const title = x('Kontakti', 'Контакты');
   return layout({
     lang, slug: 'kontakti', title,
@@ -372,8 +370,8 @@ P.contacts = (lang) => {
   </form>
 </div></section>
 <section class="section section--tight"><div class="container">
-  <div class="map"><iframe title="${x('Karte', 'Карта')}" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&amp;layer=mapnik&amp;marker=${lat}%2C${lon}"></iframe></div>
-  <p class="muted"><a href="https://www.openstreetmap.org/?mlat=${lat}&amp;mlon=${lon}#map=16/${lat}/${lon}" target="_blank" rel="noopener">${x('Atvērt lielāku karti', 'Открыть карту крупнее')}</a> · ${x('[[Kartē rādīta aptuvena vieta, jānorāda precīzas koordinātas.]]', '[[На карте примерное место, нужно указать точные координаты.]]')}</p>
+  <div class="map"><iframe title="${x('Karte', 'Карта')}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=${q}&amp;z=14&amp;hl=${lang}&amp;output=embed"></iframe></div>
+  <p class="muted"><a href="https://www.google.com/maps/search/?api=1&amp;query=${q}" target="_blank" rel="noopener">${x('Atvērt lielāku karti', 'Открыть карту крупнее')}</a></p>
 </div></section>`,
   });
 };

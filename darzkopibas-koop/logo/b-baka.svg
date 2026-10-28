@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="512" height="512" role="img" aria-label="Bāka">
+      <defs><clipPath id="b-baka-c"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+      <circle cx="60" cy="60" r="56" fill="#E8F0DC"/>
+      <g clip-path="url(#b-baka-c)"><path d="M0 96q10-6 20 0t20 0t20 0t20 0t20 0t20 0V120H0z" fill="#3A7CA5"/></g>
+      <path d="M50 96L54 46H66L70 96z" fill="#F7F2E7" stroke="#2F5233" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M52.9 60H67.1L67.8 68H52.2zM51.4 78H68.6L69.2 86H50.8z" fill="#8B5E3C"/>
+      <rect x="52" y="36" width="16" height="10" fill="#F2C14E" stroke="#2F5233" stroke-width="3"/>
+      <path d="M49 36L60 25L71 36z" fill="#2F5233"/>
+      <path d="M49 41C40 34 29 33 18 38C28 46 40 47 49 41z" fill="#6E9E4B"/>
+      <path d="M71 41C80 34 91 33 102 38C92 46 80 47 71 41z" fill="#A9CF7A"/></svg>
