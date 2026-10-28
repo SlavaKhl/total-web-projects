@@ -1,6 +1,8 @@
-/* Cooperative site scripts: mobile menu, year, mail forms */
+/* Cooperative site scripts: mobile menu, language memory, year, mail forms */
 (function () {
   document.documentElement.classList.remove('no-js');
+  // Remember the chosen language for the root page redirect.
+  try { localStorage.setItem('dks-lang', document.documentElement.lang); } catch (e) {}
 
   var btn = document.querySelector('.menu-btn');
   if (btn) btn.addEventListener('click', function () {
