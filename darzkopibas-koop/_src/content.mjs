@@ -20,13 +20,15 @@ export const org = {
   email: 'dksgavana@gmail.com', // for electricity readings, suggestions and other contact
   emailRaw: 'dksgavana@gmail.com',
   hours: [
-    [{ lv: 'Pirmdiena', ru: 'Понедельник' }, '[[18:00–20:00]]'],
-    [{ lv: 'Sestdiena', ru: 'Суббота' }, '[[10:00–13:00]]'],
+    [{ lv: 'Pirmdiena', ru: 'Понедельник' }, '18:00–20:00'],
+    [{ lv: 'Sestdiena', ru: 'Суббота' }, '10:00–13:00'],
     [{ lv: 'Citas dienas', ru: 'Другие дни' }, { lv: 'pēc iepriekšējas vienošanās', ru: 'по договорённости' }],
   ],
+  // Members' WhatsApp group. Put the invite link (https://chat.whatsapp.com/...) here; empty = ask the chairman.
+  whatsapp: '',
   bank: { payee: 'GAVANA DKS', name: 'Citadele banka', iban: 'LV58 PARX 0019 6573 9000 1', swift: 'PARXLV22' },
   electricity: { rate: 0.23, due: 10 }, // EUR per kWh; pay every month by this day
-  plots: '[[120]]',
+  plots: '120',
   area: '[[18]]',
   // Map: free Google Maps embed by address search (no API key needed).
   mapQuery: 'Gavana, Stīpnieki, Olaines pagasts, Olaines novads',
