@@ -1,0 +1,26 @@
+<!-- DKS „Gavana” logo (wooden sign), from the client's design export. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 44 868 228" role="img" aria-label="DKS „Gavana”">
+<path d="M40,140 C60,110 95,100 125,88 L300,76 C450,68 600,76 760,64 C800,61 832,55 862,50 C870,80 868,120 872,160 C875,200 864,230 870,262 L700,262 C550,256 400,270 250,264 C180,262 140,260 110,252 C88,246 68,232 52,220 C40,208 22,196 16,180 C26,166 32,152 40,140 Z" fill="#8A3428" stroke="#5A1C15" stroke-width="5" stroke-linejoin="round"></path>
+<g fill="none" stroke="#5A1C15" stroke-opacity="0.3" stroke-width="2" stroke-linecap="round">
+<path d="M120,108 C300,98 500,106 840,82"></path>
+<path d="M60,205 C250,220 420,208 862,230"></path>
+<path d="M200,250 C400,242 600,254 850,246"></path>
+</g>
+<g fill="none" stroke="#F4EFE6" stroke-width="13" stroke-linecap="round" stroke-linejoin="round">
+<path d="M195,132 L150,178 L195,224"></path>
+<g transform="translate(0,25)">
+<path d="M345,122 C330,106 300,105 285,118 C268,133 266,178 282,192 C298,205 330,204 344,190 L345,160 L318,160"></path>
+<path d="M368,200 L400,111 L432,200 M381,167 L420,167"></path>
+<path d="M450,111 L482,200 L514,111"></path>
+<path d="M531,200 L562,110 L594,200 M543,168 L582,168"></path>
+<path d="M615,200 L616,111 L672,199 L671,110"></path>
+<path d="M692,200 L724,111 L756,200 M704,168 L744,167"></path>
+</g>
+</g>
+<polygon points="174,178 194,164 194,192" fill="#F4EFE6"></polygon>
+<g fill="none" stroke="#F4EFE6" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" transform="translate(-14,0)">
+<path d="M480,92 L480,121 M480,92 C500,92 507,100 507,106 C507,114 500,121 480,121"></path>
+<path d="M521,92 L521,121 M540,92 L523,107 L541,121"></path>
+<path d="M572,96 C566,90 553,90 553,98 C553,106 572,104 572,113 C572,122 557,122 552,116"></path>
+</g>
+</svg>

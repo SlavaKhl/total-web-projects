@@ -4,7 +4,8 @@ Bilingual (Latvian + Russian) multi-page site for a gardening cooperative. Stati
 
 - Preview: https://slavakhl.github.io/total-web-projects/darzkopibas-koop/
 - Pages (in `lv/` and `ru/`): Sākums · Par mums · Jaunumi · Dokumenti · Biedriem · Kontakti
-- Logo ideas: [logo/index.html](logo/index.html) (regenerate with `node darzkopibas-koop/_src/logos.mjs`)
+- Logo: `assets/logo.svg` (client's wooden sign design, 07.11.2026); favicons and `site.webmanifest` in `assets/`.
+- Early logo ideas (not used): [logo/index.html](logo/index.html)
 - LV/RU switch in the header. The root `index.html` opens the Latvian version (or Russian, if the visitor chose it before).
 
 ## How to edit
