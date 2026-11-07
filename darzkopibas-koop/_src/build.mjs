@@ -43,8 +43,8 @@ const I = {
   leaf: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-9 6-14 15-15-1 9-6 15-15 15z"/><path d="M5 19 13 11"/></svg>',
   bell: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg>',
 };
-// Logo mark: a sprout in a rounded square. Replace with the client's logo when it arrives.
-const mark = '<svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="var(--green-700)"/><path d="M20 31V18" stroke="#F4EBD6" stroke-width="2.6" stroke-linecap="round"/><path d="M20 20c0-6 4-10 10-10 0 6-4 10-10 10z" fill="#A9CF7A"/><path d="M20 23c0-5-3.5-8-8.5-8 0 5 3.5 8 8.5 8z" fill="#F4EBD6"/></svg>';
+// Client's logo (wooden sign) in assets/logo.svg.
+const logo = (from) => `<img class="brand__logo" src="${asset(from, 'logo.svg')}" alt="${plain(O.short)}" width="174" height="46">`;
 
 // ---------- layout ----------
 const UI = {
@@ -76,7 +76,10 @@ ${LANGS.map((l) => `<link rel="alternate" hreflang="${l}" href="${url(l)}">`).jo
 <meta property="og:description" content="${plain(desc)}">
 <meta property="og:locale" content="${L.ogLocale}">
 <meta name="theme-color" content="#2F5233">
+<link rel="icon" href="${asset(from, 'favicon.ico')}" sizes="any">
 <link rel="icon" href="${asset(from, 'favicon.svg')}" type="image/svg+xml">
+<link rel="apple-touch-icon" href="${asset(from, 'apple-touch-icon.png')}">
+<link rel="manifest" href="${asset(from, 'site.webmanifest')}">
 <link rel="stylesheet" href="${asset(from, 'site.css')}">
 </head>
 <body>
@@ -84,7 +87,7 @@ ${LANGS.map((l) => `<link rel="alternate" hreflang="${l}" href="${url(l)}">`).jo
 <div class="draft-bar">${L.draft}</div>
 <header class="header">
   <div class="container header__inner">
-    <a class="brand" href="${href(from, lang, '')}">${mark}<span><span class="brand__name">${ph(O.short)}</span><span class="brand__tag">${tagline}</span></span></a>
+    <a class="brand" href="${href(from, lang, '')}">${logo(from)}<span class="brand__tag">${tagline}</span></a>
     <nav class="nav" aria-label="${L.mainMenu}"><ul>${nav}</ul></nav>
     ${switcher}
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="${L.menu}"><span></span></button>
@@ -97,7 +100,7 @@ ${ph(body)}
 <footer class="footer">
   <div class="container footer__grid">
     <div>
-      <a class="brand brand--light" href="${href(from, lang, '')}">${mark}<span><span class="brand__name">${ph(O.short)}</span><span class="brand__tag">${tagline}</span></span></a>
+      <a class="brand brand--light" href="${href(from, lang, '')}">${logo(from)}<span class="brand__tag">${tagline}</span></a>
       <p class="footer__small">${L.reg} ${ph(O.regNr)}<br>${ph(O.address)}</p>
     </div>
     <div><h2>${L.sections}</h2><ul>${routes.slice(1).map((r) => `<li><a href="${href(from, lang, r.slug)}">${tr(r.nav, lang)}</a></li>`).join('')}</ul></div>
@@ -412,6 +415,7 @@ writeFileSync(join(ROOT, 'index.html'), `<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${plain(O.short)}</title>
 <meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <script>try { location.replace((localStorage.getItem('dks-lang') === 'ru' ? 'ru' : 'lv') + '/index.html'); } catch (e) { location.replace('lv/index.html'); }</script>
 <meta http-equiv="refresh" content="1; url=lv/index.html">
