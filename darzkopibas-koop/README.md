@@ -21,4 +21,5 @@ Bilingual (Latvian + Russian) multi-page site for a gardening cooperative. Stati
 - Name, reg. No. 40103057883, legal address and phone are from the Enterprise Register via company.lursoft.lv (checked 28.10.2026).
 - `noindex` is on while it is a draft. Remove it in `_src/build.mjs` before launch. A custom domain can be added later with Netlify or Cloudflare Pages (free).
 - News items marked `example: true` are sample texts and show a "paraugs" / "пример" label.
-- Waiting from the client: email, office hours, board members, fees, bank details, plot count and area, logo choice, photos, real documents and texts.
+- Fees, electricity price, bank details, board and email come from the members' WhatsApp group description (07.11.2026).
+- Waiting from the client: office hours, plot count and area, logo choice, photos, real documents and texts.

@@ -3,7 +3,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { LANGS, org as O, board, routes, news, documents, fees, season, faq } from './content.mjs';
+import { LANGS, org as O, board, routes, news, documents, fees, payPurpose, season, faq } from './content.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -34,6 +34,7 @@ const I = {
   pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>',
   clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
   file: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>',
+  bolt: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>',
   drop: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.7S5 10 5 15a7 7 0 0 0 14 0c0-5-7-12.3-7-12.3z"/></svg>',
   people: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0M16 4a4 4 0 0 1 0 8M22 21a7 7 0 0 0-4-6.3"/></svg>',
   euro: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6.5A7 7 0 1 0 18 17.5M4 10h10M4 14h10"/></svg>',
@@ -151,10 +152,10 @@ P.home = (lang) => {
   const from = fileOf(lang, '');
   const x = (lv, ru) => (lang === 'lv' ? lv : ru);
   const quick = [
-    ['news', I.news, x('Jaunumi', 'Новости'), x('Paziņojumi, talkas un ūdens padeves izmaiņas.', 'Объявления, толоки и изменения в подаче воды.')],
-    ['members', I.euro, x('Maksājumi', 'Платежи'), x('Biedru maksa, rekvizīti un termiņi.', 'Членские взносы, реквизиты и сроки.')],
+    ['news', I.news, x('Jaunumi', 'Новости'), x('Valdes paziņojumi, talkas un atgādinājumi.', 'Объявления правления, толоки и напоминания.')],
+    ['members', I.euro, x('Maksājumi', 'Платежи'), x('Biedru maksa, elektrība un rekvizīti.', 'Членский взнос, электричество и реквизиты.')],
     ['docs', I.file, x('Dokumenti', 'Документы'), x('Statūti, noteikumi, protokoli un veidlapas.', 'Устав, правила, протоколы и бланки.')],
-    ['contacts', I.phone, x('Valde', 'Правление'), x('Pieņemšanas laiki un kontakti.', 'Часы приёма и контакты.')],
+    ['contacts', I.phone, x('Valde', 'Правление'), x('Valdes sastāvs un kontakti.', 'Состав правления и контакты.')],
   ];
   return layout({
     lang, slug: '',
@@ -165,8 +166,8 @@ P.home = (lang) => {
     <span class="eyebrow">${I.leaf} ${x(`Dārzkopības kooperatīvā sabiedrība kopš ${O.founded}`, `Садоводческое общество с ${O.founded} года`)}</span>
     <h1>${x('Mūsu dārzi, mūsu <em>kopiena</em>.', 'Наши сады, наше <em>сообщество</em>.')}</h1>
     <p class="lead">${x(
-      `${O.short} apvieno ${O.plots} dārzu īpašniekus. Mēs kopā rūpējamies par ceļiem, ūdensapgādi un kārtību, lai katram būtu patīkami strādāt un atpūsties savā dārzā.`,
-      `${O.short} объединяет ${O.plots} владельцев садовых участков. Вместе мы заботимся о дорогах, водоснабжении и порядке, чтобы каждому было приятно работать и отдыхать в своём саду.`)}</p>
+      `${O.short} apvieno ${O.plots} dārzu īpašniekus. Mēs kopā rūpējamies par ceļiem, elektrību un kārtību, lai katram būtu patīkami strādāt un atpūsties savā dārzā.`,
+      `${O.short} объединяет ${O.plots} владельцев садовых участков. Вместе мы заботимся о дорогах, электричестве и порядке, чтобы каждому было приятно работать и отдыхать в своём саду.`)}</p>
     <div class="btn-row">
       <a class="btn btn--primary" href="${href(from, lang, 'biedriem')}">${x('Informācija biedriem', 'Информация для членов')} ${I.arrow}</a>
       <a class="btn btn--ghost" href="${href(from, lang, 'kontakti')}">${x('Sazināties ar valdi', 'Связаться с правлением')}</a>
@@ -225,8 +226,8 @@ P.about = (lang) => {
     <h2>${x('Ko mēs darām', 'Чем мы занимаемся')}</h2>
     <ul class="checks">
       ${(lang === 'lv'
-        ? ['Uzturam iekšējos ceļus, vārtus un apgaismojumu', 'Nodrošinām ūdensapgādi dārzu sezonā', 'Organizējam atkritumu izvešanu', 'Rīkojam talkas un biedru kopsapulces', 'Sadarbojamies ar pašvaldību un pakalpojumu sniedzējiem']
-        : ['Содержим внутренние дороги, ворота и освещение', 'Обеспечиваем водоснабжение в садовый сезон', 'Организуем вывоз мусора', 'Проводим толоки и общие собрания', 'Сотрудничаем с самоуправлением и поставщиками услуг']
+        ? ['Uzturam iekšējos ceļus, vārtus un apgaismojumu', 'Nodrošinām elektroapgādi un patēriņa uzskaiti', 'Organizējam atkritumu izvešanu', 'Rīkojam talkas un biedru kopsapulces', 'Sadarbojamies ar pašvaldību un pakalpojumu sniedzējiem']
+        : ['Содержим внутренние дороги, ворота и освещение', 'Обеспечиваем электроснабжение и учёт потребления', 'Организуем вывоз мусора', 'Проводим толоки и общие собрания', 'Сотрудничаем с самоуправлением и поставщиками услуг']
       ).map((i) => `<li>${i}</li>`).join('')}
     </ul>
   </div>
@@ -256,7 +257,7 @@ P.news = (lang) => {
   const title = x('Jaunumi', 'Новости');
   return layout({
     lang, slug: 'jaunumi', title,
-    desc: x(`Jaunumi un paziņojumi biedriem: talkas, ūdensapgāde, maksājumi un kopsapulces. ${O.short}.`, `Новости и объявления: толоки, водоснабжение, платежи и собрания. ${O.short}.`),
+    desc: x(`Jaunumi un paziņojumi biedriem: talkas, elektrība, maksājumi un kopsapulces. ${O.short}.`, `Новости и объявления: толоки, электричество, платежи и собрания. ${O.short}.`),
     body: `${pageHero(lang, 'jaunumi', title, x('Valdes paziņojumi, talkas un svarīgākā informācija biedriem.', 'Объявления правления, толоки и важная информация для членов.'))}
 <section class="section"><div class="container">
   <div class="news-list">${news.map((n) => newsCard(n, lang)).join('')}</div>
@@ -290,12 +291,12 @@ P.members = (lang) => {
       <p class="form__hint">${x('Poga atver jūsu e-pasta programmu ar sagatavotu vēstuli.', 'Кнопка откроет вашу почтовую программу с готовым письмом.')}</p>`;
   return layout({
     lang, slug: 'biedriem', title: x('Biedriem', 'Членам'),
-    desc: x(`Biedru maksa, rekvizīti, ūdens skaitītāju rādījumi, kārtības noteikumi un biežāk uzdotie jautājumi. ${O.short}.`, `Членские взносы, реквизиты, показания счётчиков воды, правила и частые вопросы. ${O.short}.`),
-    body: `${pageHero(lang, 'biedriem', x('Informācija biedriem', 'Информация для членов'), x('Maksājumi, ūdens skaitītāju rādījumi, kārtības noteikumi un atbildes uz biežākajiem jautājumiem.', 'Платежи, показания счётчиков воды, правила порядка и ответы на частые вопросы.'))}
+    desc: x(`Gada biedru maksa, elektrība, rekvizīti, skaitītāja rādījumi, kārtības noteikumi un biežāk uzdotie jautājumi. ${O.short}.`, `Годовой взнос, электричество, реквизиты, показания счётчика, правила и частые вопросы. ${O.short}.`),
+    body: `${pageHero(lang, 'biedriem', x('Informācija biedriem', 'Информация для членов'), x('Maksājumi, elektrības skaitītāja rādījumi, kārtības noteikumi un atbildes uz biežākajiem jautājumiem.', 'Платежи, показания счётчика электричества, правила порядка и ответы на частые вопросы.'))}
 <section class="section"><div class="container split">
   <div>
     <h2>${x('Maksas', 'Взносы и платежи')}</h2>
-    <p class="muted">${x('Maksu apmēru katru gadu apstiprina biedru kopsapulce. Samaksas termiņš: [[31. oktobris]].', 'Размер платежей ежегодно утверждает общее собрание. Срок оплаты: [[31 октября]].')}</p>
+    <p class="muted">${x(`Par elektrību jāmaksā katru mēnesi līdz ${O.electricity.due}. datumam.`, `За электричество нужно платить каждый месяц до ${O.electricity.due} числа.`)}</p>
     <table class="table"><thead><tr><th>${x('Maksājums', 'Платёж')}</th><th>${x('Apmērs', 'Сумма')}</th></tr></thead><tbody>
       ${fees.map(([n, a, d]) => `<tr><td><strong>${tr(n, lang)}</strong><small>${tr(d, lang)}</small></td><td>${tr(a, lang)}</td></tr>`).join('')}
     </tbody></table>
@@ -303,24 +304,29 @@ P.members = (lang) => {
   <aside class="card card--green">
     <h2>${I.euro} ${x('Rekvizīti', 'Реквизиты')}</h2>
     <dl class="facts">
-      <dt>${x('Saņēmējs', 'Получатель')}</dt><dd>${O.name}</dd>
+      <dt>${x('Saņēmējs', 'Получатель')}</dt><dd>${O.bank.payee}</dd>
       <dt>${UI[lang].reg}</dt><dd>${O.regNr}</dd>
-      <dt>${x('Banka', 'Банк')}</dt><dd>${O.bank.name}, ${O.bank.swift}</dd>
       <dt>${x('Konts', 'Счёт')}</dt><dd class="mono">${O.bank.iban}</dd>
-      <dt>${x('Mērķis', 'Назначение')}</dt><dd>${x('Gabala Nr., vārds, uzvārds, maksājuma veids', '№ участка, имя, фамилия, вид платежа')}</dd>
+      <dt>${x('Banka', 'Банк')}</dt><dd>${O.bank.name}, ${O.bank.swift}</dd>
     </dl>
+    <h3 class="card__sub">${x('Maksājuma mērķī norādiet', 'В назначении платежа укажите')}</h3>
+    <dl class="facts facts--stack">${payPurpose.map(([k, v]) => `<dt>${tr(k, lang)}</dt><dd>${tr(v, lang)}</dd>`).join('')}</dl>
   </aside>
 </div></section>
 <section class="section section--cream"><div class="container split">
   <div>
-    <h2>${I.drop} ${x('Ūdens skaitītāju rādījumi', 'Показания счётчиков воды')}</h2>
-    <p>${x('Sūtiet rādījumu valdei e-pastā vai īsziņā. Norādiet gabala numuru, rādījumu un datumu.', 'Отправьте показания правлению по e-mail или SMS. Укажите номер участка, показание и дату.')}</p>
-    <form class="form" data-mail="${O.emailRaw}" data-subject="${x('Ūdens skaitītāja rādījums', 'Показания счётчика воды')}">
+    <h2>${I.bolt} ${x('Elektrības skaitītāja rādījumi', 'Показания счётчика электричества')}</h2>
+    <p>${x(`Katru mēnesi līdz ${O.electricity.due}. datumam nosūtiet rādījumu uz <a href="mailto:${O.emailRaw}">${O.email}</a>: zemes gabala numuru, skaitītāja rādījumu un patērētās kWh.`, `Каждый месяц до ${O.electricity.due} числа отправьте показания на <a href="mailto:${O.emailRaw}">${O.email}</a>: номер участка, показание счётчика и израсходованные кВт·ч.`)}</p>
+    <form class="form" data-mail="${O.emailRaw}" data-subject="${x('Elektrības skaitītāja rādījums', 'Показания счётчика электричества')}">
       <div class="form__row">
         <label>${x('Gabala Nr.', '№ участка')}<input name="${x('Gabala Nr.', '№ участка')}" required inputmode="numeric"></label>
-        <label>${x('Rādījums (m³)', 'Показание (м³)')}<input name="${x('Rādījums', 'Показание')}" required inputmode="decimal"></label>
+        <label>${x('Rādījums (kWh)', 'Показание (кВт·ч)')}<input name="${x('Skaitītāja rādījums', 'Показание счётчика')}" required inputmode="decimal"></label>
       </div>
-      <label>${x('Vārds, uzvārds', 'Имя, фамилия')}<input name="${x('Vārds, uzvārds', 'Имя, фамилия')}" required autocomplete="name"></label>
+      <div class="form__row">
+        <label>${x('Patērētās kWh', 'Израсходовано кВт·ч')}<input name="${x('Patērētās kWh', 'Израсходовано кВт·ч')}" required inputmode="decimal" data-rate="${O.electricity.rate}"></label>
+        <label>${x('Vārds, uzvārds', 'Имя, фамилия')}<input name="${x('Vārds, uzvārds', 'Имя, фамилия')}" required autocomplete="name"></label>
+      </div>
+      <p class="sum" data-sum hidden>${x('Summa apmaksai', 'Сумма к оплате')}: <b data-sum-value></b> EUR <small>(${x('kWh', 'кВт·ч')} × ${String(O.electricity.rate).replace('.', ',')} EUR)</small></p>
       ${sendBtn}
     </form>
   </div>
@@ -353,8 +359,8 @@ P.contacts = (lang) => {
 <section class="section"><div class="container split">
   <div class="contact-list">
     <div class="contact">${I.pin}<div><strong>${x('Adrese', 'Адрес')}</strong><span>${O.address}</span></div></div>
-    <div class="contact">${I.phone}<div><strong>${x('Tālrunis', 'Телефон')}</strong><a href="tel:${O.tel}">${O.phone}</a></div></div>
-    <div class="contact">${I.mail}<div><strong>E-pasts${x('', ' / E-mail')}</strong><a href="mailto:${O.emailRaw}">${O.email}</a></div></div>
+    <div class="contact">${I.phone}<div><strong>${x('Tālrunis', 'Телефон')}</strong><a href="tel:${O.tel}">${O.phone}</a><small class="muted">${x('Valdes priekšsēdētājs Aleksandrs Petrašs', 'Председатель правления Aleksandrs Petrašs')}</small></div></div>
+    <div class="contact">${I.mail}<div><strong>E-pasts${x('', ' / E-mail')}</strong><a href="mailto:${O.emailRaw}">${O.email}</a><small class="muted">${x('Elektrības rādījumiem, ierosinājumiem un citai saziņai', 'Для показаний электричества, предложений и другой связи')}</small></div></div>
     <div class="contact">${I.clock}<div><strong>${x('Pieņemšanas laiks', 'Часы приёма')}</strong><dl class="hours">${O.hours.map(([d, h]) => `<dt>${tr(d, lang)}</dt><dd>${tr(h, lang)}</dd>`).join('')}</dl></div></div>
   </div>
   <form class="form card" data-mail="${O.emailRaw}" data-subject="${x('Jautājums valdei', 'Вопрос правлению')}">
