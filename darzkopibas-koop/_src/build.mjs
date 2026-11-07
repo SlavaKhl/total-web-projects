@@ -34,6 +34,7 @@ const I = {
   pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>',
   clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
   file: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>',
+  chat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5 5 16a8.5 8.5 0 1 1 3 3z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1.2-1.4-2-1-1 .8a4 4 0 0 1-2.1-2.1l.8-1-1-2z"/></svg>',
   bolt: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>',
   drop: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.7S5 10 5 15a7 7 0 0 0 14 0c0-5-7-12.3-7-12.3z"/></svg>',
   people: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0M16 4a4 4 0 0 1 0 8M22 21a7 7 0 0 0-4-6.3"/></svg>',
@@ -374,6 +375,19 @@ P.contacts = (lang) => {
     <button class="btn btn--primary" type="submit">${x('Sagatavot e-pastu', 'Подготовить письмо')} ${I.mail}</button>
     <p class="form__hint">${x('Poga atver jūsu e-pasta programmu ar sagatavotu vēstuli.', 'Кнопка откроет вашу почтовую программу с готовым письмом.')}</p>
   </form>
+</div></section>
+<section class="section section--tight"><div class="container">
+  <div class="wa">
+    <span class="wa__icon">${I.chat}</span>
+    <div>
+      <h2>${x('Biedru WhatsApp grupa', 'Группа членов в WhatsApp')}</h2>
+      <p>${x('Kopienas grupā valde publicē paziņojumus, atgādinājumus par maksājumiem un talkām. Biedri var uzdot jautājumus un dalīties ar ziņām.', 'В группе сообщества правление публикует объявления, напоминания о платежах и толоках. Члены могут задавать вопросы и делиться новостями.')}</p>
+      <p class="muted">${O.whatsapp
+        ? x('Grupa paredzēta tikai DKS „Gavana” biedriem.', 'Группа только для членов DKS „Gavana”.')
+        : x(`Lai pievienotos, sazinieties ar valdes priekšsēdētāju: <a href="tel:${O.tel}">${O.phone}</a> vai <a href="mailto:${O.emailRaw}">${O.email}</a>. Norādiet savu zemes gabala numuru.`, `Чтобы вступить, свяжитесь с председателем правления: <a href="tel:${O.tel}">${O.phone}</a> или <a href="mailto:${O.emailRaw}">${O.email}</a>. Укажите номер своего участка.`)}</p>
+    </div>
+    ${O.whatsapp ? `<a class="btn btn--wa" href="${O.whatsapp}" target="_blank" rel="noopener">${I.chat} ${x('Pievienoties grupai', 'Вступить в группу')}</a>` : ''}
+  </div>
 </div></section>
 <section class="section section--tight"><div class="container">
   <div class="map"><iframe title="${x('Karte', 'Карта')}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=${q}&amp;z=14&amp;hl=${lang}&amp;output=embed"></iframe></div>

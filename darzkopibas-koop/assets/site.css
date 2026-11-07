@@ -242,3 +242,14 @@ a.docs__item:hover { border-color: var(--green-500); color: var(--ink); }
 .sum b { font-size: 1.2rem; color: var(--green-700); }
 .sum small { color: var(--muted); }
 .contact small { display: block; font-size: .88rem; }
+
+/* WhatsApp group block */
+.wa { display: flex; gap: 20px; align-items: center; background: #E7F6EC; border: 1px solid #BFE3CB; border-radius: var(--radius); padding: 24px 28px; }
+.wa h2 { margin-bottom: .3em; }
+.wa p { margin: 0 0 .5em; }
+.wa p:last-child { margin-bottom: 0; }
+.wa__icon { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: #25D366; color: var(--white); flex: none; }
+.wa__icon svg { width: 30px; height: 30px; }
+.btn--wa { background: #1DA851; color: var(--white); flex: none; }
+.btn--wa:hover { background: #158A41; color: var(--white); }
+@media (max-width: 760px) { .wa { flex-direction: column; align-items: flex-start; padding: 20px; } }
