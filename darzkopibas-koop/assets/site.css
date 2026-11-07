@@ -232,3 +232,13 @@ a.docs__item:hover { border-color: var(--green-500); color: var(--ink); }
 .footer mark.ph { color: var(--ink); }
 .brand--light, .brand--light .brand__tag { color: #E8F0DC; }
 @media (max-width: 760px) { .footer__grid { grid-template-columns: 1fr; gap: 28px; } }
+
+/* Payment purpose + electricity sum */
+.card__sub { font-family: var(--font); font-size: .95rem; margin: 20px 0 8px; color: var(--green-900); }
+.facts--stack { grid-template-columns: 1fr; gap: 2px; }
+.facts--stack dt { font-weight: 600; color: var(--green-900); }
+.facts--stack dd { font-weight: 400; margin-bottom: 8px; }
+.sum { margin: 0; padding: 12px 16px; background: var(--white); border: 1px solid var(--line); border-radius: 10px; }
+.sum b { font-size: 1.2rem; color: var(--green-700); }
+.sum small { color: var(--muted); }
+.contact small { display: block; font-size: .88rem; }

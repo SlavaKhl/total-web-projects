@@ -14,16 +14,18 @@ export const org = {
   regNr: '40103057883',
   founded: '1992', // registration date in the Enterprise Register: 28.07.1992
   address: '„Gavana 123”, Stīpnieki, Olaines pag., Olaines nov., LV-2127',
-  phone: '+371 67 341 479',
-  tel: '+37167341479',
-  email: '[[valde@example.lv]]',
-  emailRaw: 'valde@example.lv',
+  // Contacts and payments from the members' WhatsApp group description (07.11.2026).
+  phone: '+371 27 008 382', // board chairman, main contact
+  tel: '+37127008382',
+  email: 'dksgavana@gmail.com', // for electricity readings, suggestions and other contact
+  emailRaw: 'dksgavana@gmail.com',
   hours: [
     [{ lv: 'Pirmdiena', ru: 'Понедельник' }, '[[18:00–20:00]]'],
     [{ lv: 'Sestdiena', ru: 'Суббота' }, '[[10:00–13:00]]'],
     [{ lv: 'Citas dienas', ru: 'Другие дни' }, { lv: 'pēc iepriekšējas vienošanās', ru: 'по договорённости' }],
   ],
-  bank: { name: '[[Banka]]', iban: '[[LV00 BANK 0000 0000 0000 0]]', swift: '[[BANKLV2X]]' },
+  bank: { payee: 'GAVANA DKS', name: 'Citadele banka', iban: 'LV58 PARX 0019 6573 9000 1', swift: 'PARXLV22' },
+  electricity: { rate: 0.23, due: 10 }, // EUR per kWh; pay every month by this day
   plots: '[[120]]',
   area: '[[18]]',
   // Map: free Google Maps embed by address search (no API key needed).
@@ -31,12 +33,13 @@ export const org = {
   siteUrl: 'https://slavakhl.github.io/total-web-projects/darzkopibas-koop/',
 };
 
+const member = { lv: 'Valdes locekle', ru: 'Член правления' };
 export const board = [
-  [{ lv: 'Valdes priekšsēdētājs', ru: 'Председатель правления' }, '[[Vārds Uzvārds]]', '[[+371 20 000 001]]'],
-  [{ lv: 'Valdes loceklis', ru: 'Член правления' }, '[[Vārds Uzvārds]]', '[[+371 20 000 002]]'],
-  [{ lv: 'Valdes loceklis', ru: 'Член правления' }, '[[Vārds Uzvārds]]', ''],
-  [{ lv: 'Revidents', ru: 'Ревизор' }, '[[Vārds Uzvārds]]', ''],
-  [{ lv: 'Grāmatvede', ru: 'Бухгалтер' }, '[[Vārds Uzvārds]]', '[[+371 20 000 003]]'],
+  [{ lv: 'Valdes priekšsēdētājs', ru: 'Председатель правления' }, 'Aleksandrs Petrašs', '+371 27 008 382'],
+  [member, 'Anna Barkāne', ''],
+  [{ lv: 'Valdes loceklis', ru: 'Член правления' }, 'Oskars Bušs', ''],
+  [member, 'Jūlija Bibarceva', ''],
+  [member, 'Valērija Zabolotska', ''],
 ];
 
 // Pages in menu order. Same folder names in both languages: lv/par-mums/, ru/par-mums/.
@@ -51,40 +54,33 @@ export const routes = [
 
 // Newest first. "example: true" adds a "sample" label: delete these when real news arrive.
 export const news = [
-  { date: '2026-10-20', example: true,
-    tag: { lv: 'Ūdensapgāde', ru: 'Водоснабжение' },
-    title: { lv: 'Ūdensvada izslēgšana ziemas sezonai', ru: 'Отключение водопровода на зиму' },
+  { date: '2026-11-01', example: true,
+    tag: { lv: 'Elektrība', ru: 'Электричество' },
+    title: { lv: 'Elektrības rādījumi un maksājums līdz 10. datumam', ru: 'Показания и оплата электричества до 10 числа' },
     text: {
-      lv: 'Dārzu ūdensvads tiks izslēgts <b>[[1. novembrī]]</b>. Lūdzam līdz tam laikam aizvērt krānus savā gabalā, iztukšot caurules un nodot ūdens skaitītāja rādījumus valdei.',
-      ru: 'Водопровод в садах будет отключён <b>[[1 ноября]]</b>. До этого просим закрыть краны на своём участке, слить воду из труб и передать правлению показания счётчика воды.',
+      lv: 'Atgādinām: katru mēnesi līdz <b>10. datumam</b> nosūtiet elektrības skaitītāja rādījumu uz <b>dksgavana@gmail.com</b> un samaksājiet par patērētajām kWh (0,23 EUR par 1 kWh).',
+      ru: 'Напоминаем: каждый месяц до <b>10 числа</b> отправьте показания счётчика электричества на <b>dksgavana@gmail.com</b> и оплатите израсходованные кВт·ч (0,23 EUR за 1 кВт·ч).',
     } },
   { date: '2026-10-05', example: true,
     tag: { lv: 'Talka', ru: 'Толока' },
     title: { lv: 'Rudens talka sestdien, [[18. oktobrī]]', ru: 'Осенняя толока в субботу, [[18 октября]]' },
     text: {
-      lv: 'Aicinām biedrus uz kopīgu talku: grāvju tīrīšana, ceļmalu sakopšana un lapu savākšana pie vārtiem. Sākums plkst. <b>[[10:00]]</b> pie valdes mājiņas. Darbarīkus ņemiet līdzi.',
-      ru: 'Приглашаем членов общества на толоку: чистка канав, уборка обочин и сбор листьев у ворот. Начало в <b>[[10:00]]</b> у домика правления. Инструменты берите с собой.',
+      lv: 'Aicinām biedrus uz kopīgu talku: grāvju tīrīšana, ceļmalu sakopšana un lapu savākšana pie vārtiem. Sākums plkst. <b>[[10:00]]</b>. Darbarīkus ņemiet līdzi.',
+      ru: 'Приглашаем членов общества на толоку: чистка канав, уборка обочин и сбор листьев у ворот. Начало в <b>[[10:00]]</b>. Инструменты берите с собой.',
     } },
   { date: '2026-09-15', example: true,
     tag: { lv: 'Maksājumi', ru: 'Платежи' },
-    title: { lv: 'Atgādinājums par biedru maksu', ru: 'Напоминание о членском взносе' },
+    title: { lv: 'Gada biedru maksa', ru: 'Годовой членский взнос' },
     text: {
-      lv: 'Šī gada biedru maksa un apsaimniekošanas maksa jāsamaksā līdz <b>[[31. oktobrim]]</b>. Rekvizīti un summas ir sadaļā „Biedriem”.',
-      ru: 'Членский взнос и плату за обслуживание за этот год нужно оплатить до <b>[[31 октября]]</b>. Реквизиты и суммы в разделе «Членам».',
+      lv: 'Gada iemaksa ir 80 EUR par vienu zemes gabalu, 120 EUR par diviem vai 160 EUR par trim. Maksājuma mērķī norādiet gabala numuru un gadu. Rekvizīti ir sadaļā „Biedriem”.',
+      ru: 'Годовой взнос: 80 EUR за один участок, 120 EUR за два или 160 EUR за три. В назначении платежа укажите номер участка и год. Реквизиты в разделе «Членам».',
     } },
   { date: '2026-06-02', example: true,
     tag: { lv: 'Kopsapulce', ru: 'Общее собрание' },
     title: { lv: 'Biedru kopsapulces lēmumi', ru: 'Решения общего собрания' },
     text: {
-      lv: 'Kopsapulcē apstiprināts gada pārskats, nākamā gada tāme un ievēlēta valde. Protokols pieejams sadaļā „Dokumenti”.',
-      ru: 'Собрание утвердило годовой отчёт, смету на следующий год и избрало правление. Протокол доступен в разделе «Документы».',
-    } },
-  { date: '2026-04-18', example: true,
-    tag: { lv: 'Ūdensapgāde', ru: 'Водоснабжение' },
-    title: { lv: 'Ūdens padeve sāksies [[1. maijā]]', ru: 'Подача воды начнётся [[1 мая]]' },
-    text: {
-      lv: 'Pēc ziemas ūdensvads tiks ieslēgts [[1. maijā]]. Ja pamanāt noplūdi, lūdzu nekavējoties ziņojiet valdei.',
-      ru: 'После зимы водопровод включат [[1 мая]]. Если заметите протечку, пожалуйста, сразу сообщите правлению.',
+      lv: 'Kopsapulcē apstiprināts gada pārskats un nākamā gada tāme. Protokols pieejams sadaļā „Dokumenti”.',
+      ru: 'Собрание утвердило годовой отчёт и смету на следующий год. Протокол доступен в разделе «Документы».',
     } },
 ];
 
@@ -93,7 +89,6 @@ export const documents = [
   { group: { lv: 'Pamatdokumenti', ru: 'Основные документы' }, items: [
     { title: { lv: 'Statūti', ru: 'Устав' }, note: { lv: 'Apstiprināti kopsapulcē [[gads]]', ru: 'Утверждён собранием в [[год]]' }, file: '' },
     { title: { lv: 'Iekšējās kārtības noteikumi', ru: 'Правила внутреннего распорядка' }, note: { lv: 'Kārtība dārzu teritorijā', ru: 'Порядок на территории садов' }, file: '' },
-    { title: { lv: 'Ūdensapgādes lietošanas noteikumi', ru: 'Правила пользования водопроводом' }, note: '', file: '' },
   ] },
   { group: { lv: 'Kopsapulces un finanses', ru: 'Собрания и финансы' }, items: [
     { title: { lv: 'Kopsapulces protokols, [[2026]]', ru: 'Протокол общего собрания, [[2026]]' }, note: '', file: '' },
@@ -103,35 +98,39 @@ export const documents = [
   { group: { lv: 'Veidlapas', ru: 'Бланки' }, items: [
     { title: { lv: 'Iesniegums uzņemšanai biedros', ru: 'Заявление о приёме в члены' }, note: { lv: 'Aizpildīt un iesniegt valdei', ru: 'Заполнить и сдать в правление' }, file: '' },
     { title: { lv: 'Iesniegums izstāšanās no biedriem', ru: 'Заявление о выходе из членов' }, note: '', file: '' },
-    { title: { lv: 'Ūdens skaitītāja rādījumu veidlapa', ru: 'Бланк показаний счётчика воды' }, note: '', file: '' },
   ] },
 ];
 
 // Member fees: name, amount, comment.
 export const fees = [
-  [{ lv: 'Biedra maksa', ru: 'Членский взнос' }, { lv: '[[00,00]] EUR gadā', ru: '[[00,00]] EUR в год' }, { lv: 'par vienu biedru', ru: 'с одного члена' }],
-  [{ lv: 'Apsaimniekošanas maksa', ru: 'Плата за обслуживание' }, { lv: '[[0,00]] EUR par m² gadā', ru: '[[0,00]] EUR за м² в год' }, { lv: 'ceļi, vārti, atkritumi, apgaismojums', ru: 'дороги, ворота, мусор, освещение' }],
-  [{ lv: 'Ūdens', ru: 'Вода' }, { lv: '[[0,00]] EUR par m³', ru: '[[0,00]] EUR за м³' }, { lv: 'pēc skaitītāja rādījumiem', ru: 'по показаниям счётчика' }],
-  [{ lv: 'Iestāšanās maksa', ru: 'Вступительный взнос' }, '[[00,00]] EUR', { lv: 'vienreizēja, jauniem biedriem', ru: 'разовый, для новых членов' }],
+  [{ lv: 'Gada biedru maksa, 1 zemes gabals', ru: 'Годовой взнос, 1 участок' }, '80 EUR', { lv: 'par gadu', ru: 'за год' }],
+  [{ lv: 'Gada biedru maksa, 2 zemes gabali', ru: 'Годовой взнос, 2 участка' }, '120 EUR', { lv: 'par gadu', ru: 'за год' }],
+  [{ lv: 'Gada biedru maksa, 3 zemes gabali', ru: 'Годовой взнос, 3 участка' }, '160 EUR', { lv: 'par gadu', ru: 'за год' }],
+  [{ lv: 'Elektrība', ru: 'Электричество' }, { lv: '0,23 EUR par 1 kWh', ru: '0,23 EUR за 1 кВт·ч' }, { lv: 'maksā katru mēnesi līdz 10. datumam', ru: 'оплата каждый месяц до 10 числа' }],
+];
+
+// What to write in the payment purpose (maksājuma mērķis).
+export const payPurpose = [
+  [{ lv: 'Par elektrību', ru: 'За электричество' }, { lv: 'zemes gabala numurs, elektrības skaitītāja rādījums un patērētie kWh', ru: 'номер участка, показание счётчика и израсходованные кВт·ч' }],
+  [{ lv: 'Gada biedru maksa', ru: 'Годовой взнос' }, { lv: 'zemes gabala (vai gabalu) numuri un gads, par kuru maksājat', ru: 'номер участка (или участков) и год, за который платите' }],
 ];
 
 // Season calendar (month, what happens).
 export const season = [
+  [{ lv: 'Katru mēnesi', ru: 'Каждый месяц' }, { lv: 'Līdz 10. datumam: elektrības rādījumi un maksājums', ru: 'До 10 числа: показания и оплата электричества' }],
   [{ lv: 'Aprīlis', ru: 'Апрель' }, { lv: 'Pavasara talka, ceļu un grāvju apskate', ru: 'Весенняя толока, осмотр дорог и канав' }],
-  [{ lv: 'Maijs', ru: 'Май' }, { lv: 'Ūdensvada ieslēgšana, ūdens skaitītāju pārbaude', ru: 'Включение водопровода, проверка счётчиков' }],
   [{ lv: 'Jūnijs', ru: 'Июнь' }, { lv: 'Biedru kopsapulce', ru: 'Общее собрание членов' }],
   [{ lv: 'Jūlijs–augusts', ru: 'Июль–август' }, { lv: 'Ugunsdrošības un kārtības pārbaudes', ru: 'Проверки пожарной безопасности и порядка' }],
-  [{ lv: 'Oktobris', ru: 'Октябрь' }, { lv: 'Rudens talka, maksājumu termiņš', ru: 'Осенняя толока, срок оплаты взносов' }],
-  [{ lv: 'Novembris', ru: 'Ноябрь' }, { lv: 'Ūdensvada izslēgšana un rādījumu nodošana', ru: 'Отключение водопровода и передача показаний' }],
+  [{ lv: 'Oktobris', ru: 'Октябрь' }, { lv: 'Rudens talka', ru: 'Осенняя толока' }],
 ];
 
 export const faq = [
   [{ lv: 'Kā kļūt par biedru?', ru: 'Как стать членом общества?' }, {
     lv: 'Iegādājoties vai mantojot zemes gabalu kooperatīva teritorijā, iesniedziet valdei iesniegumu par uzņemšanu biedros un īpašumtiesību apliecinošu dokumentu (zemesgrāmatas apliecības kopiju). Valde lēmumu pieņem tuvākajā sēdē.',
     ru: 'Если вы купили или унаследовали участок на территории кооператива, подайте в правление заявление о приёме в члены и документ о праве собственности (копию выписки из земельной книги). Правление примет решение на ближайшем заседании.' }],
-  [{ lv: 'Kā nodot ūdens skaitītāja rādījumus?', ru: 'Как передать показания счётчика воды?' }, {
-    lv: 'Rādījumus sūtiet uz e-pastu vai īsziņā valdei, norādot gabala numuru un rādījumu. Rādījumi jānodod [[līdz katra mēneša 25. datumam]] un pirms ūdensvada izslēgšanas rudenī.',
-    ru: 'Отправьте показания правлению по электронной почте или SMS, указав номер участка и показание. Показания нужно передавать [[до 25 числа каждого месяца]] и перед отключением водопровода осенью.' }],
+  [{ lv: 'Kā nodot elektrības skaitītāja rādījumus?', ru: 'Как передать показания счётчика электричества?' }, {
+    lv: 'Katru mēnesi līdz 10. datumam nosūtiet uz dksgavana@gmail.com zemes gabala numuru, skaitītāja rādījumu un patērētās kWh. Tad samaksājiet 0,23 EUR par katru kWh. To var izdarīt arī ar formu sadaļā „Biedriem”.',
+    ru: 'Каждый месяц до 10 числа отправьте на dksgavana@gmail.com номер участка, показание счётчика и израсходованные кВт·ч. Затем оплатите 0,23 EUR за каждый кВт·ч. Это можно сделать и через форму в разделе «Членам».' }],
   [{ lv: 'Ko darīt, ja pārdodu savu gabalu?', ru: 'Что делать, если я продаю участок?' }, {
     lv: 'Informējiet valdi, nokārtojiet visus maksājumus un iesniedziet iesniegumu par izstāšanos. Jaunais īpašnieks var iestāties kooperatīvā ar savu iesniegumu.',
     ru: 'Сообщите правлению, оплатите все платежи и подайте заявление о выходе. Новый владелец может вступить в кооператив по своему заявлению.' }],
