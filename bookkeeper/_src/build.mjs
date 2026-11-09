@@ -19,6 +19,7 @@ function href(from, lang, slug) {
 }
 const asset = (from, p) => relative(dirname(from), join('assets', p)).split('\\').join('/');
 const route = (key) => routes.find((r) => r.key === key);
+const AREAS = ['accounting', 'legal', 'audit', 'it'];
 
 const I = {
   arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
@@ -33,6 +34,7 @@ const I = {
   seal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="m9 9 2 2 4-4M8.5 14 7 22l5-3 5 3-1.5-8"/></svg>',
   code: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M9 9l-2 2 2 2M15 9l2 2-2 2"/></svg>',
   lang: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h8M8 3v2M6 5c0 4 3 7 6 8M10 5c-1 4-4 7-6 8M13 21l4-10 4 10M14.5 18h5"/></svg>',
+  globe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
   people: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0M16 4a4 4 0 0 1 0 8M22 21a7 7 0 0 0-4-6.3"/></svg>',
 };
 const markSvg = '<svg class="brand__mark" viewBox="0 0 76 52" aria-hidden="true"><g transform="translate(2 2) skewX(-12)"><path fill="#C8102E" d="M8 48V0h10l16 28V0h10v48H34L18 20v28zM50 0h10v38h18v10H50z"/></g></svg>';
@@ -57,7 +59,7 @@ function layout({ lang, slug, title, desc, body, schema }) {
     taxID: C.regNo, hasCredential: { '@type': 'EducationalOccupationalCredential', name: `VID licence ${C.licence.no}`, recognizedBy: { '@type': 'GovernmentOrganization', name: 'Valsts ieņēmumu dienests' } },
     knowsLanguage: ['lv', 'ru'], logo: C.siteUrl + 'assets/logo.svg',
   };
-  const footerSvc = ['accounting', 'legal', 'audit', 'software'].map((k) => `<li><a href="${href(from, lang, route(k).slug)}">${L.nav[k]}</a></li>`).join('');
+  const footerSvc = [...AREAS, 'software'].map((k) => `<li><a href="${href(from, lang, route(k).slug)}">${L.nav[k]}</a></li>`).join('');
   const footerCo = ['about', 'pricing', 'clients', 'faq', 'privacy'].map((k) => `<li><a href="${href(from, lang, route(k).slug)}">${L.nav[k]}</a></li>`).join('');
 
   return `<!doctype html>
@@ -172,11 +174,11 @@ function areaCard(lang, from, key) {
   <ul>${a.items.slice(0, 3).map((i) => `<li>${i[0]}</li>`).join('')}</ul>
   <span class="card__more">${t[lang].more} ${I.arrow}</span></a>`;
 }
-function softwareCard(lang, from) {
+function softwareCard(lang, from, wide) {
   const x = lang === 'lv'
     ? ['NIKA LAT programmas', 'Pašu izstrādāts grāmatvedības komplekss ar instalāciju, apmācību un atbalstu.', ['FINUS — galvenā grāmata', 'DARBA ALGA — algu aprēķins', 'Ēku apsaimniekošanas moduļi']]
     : ['Программы NIKA LAT', 'Собственный бухгалтерский комплекс с установкой, обучением и поддержкой.', ['FINUS — главная книга', 'DARBA ALGA — расчет зарплаты', 'Модули управления зданиями']];
-  return `<a class="card card--ink reveal" href="${href(from, lang, 'software')}">
+  return `<a class="card card--ink${wide ? ' card--wide' : ''} reveal" href="${href(from, lang, 'software')}">
   <span class="card__icon">${I.code}</span>
   <h3>${x[0]}</h3><p>${x[1]}</p>
   <ul>${x[2].map((i) => `<li>${i}</li>`).join('')}</ul>
@@ -205,7 +207,7 @@ P.home = (lang) => {
     stamp: ['kopš', '1993'],
     facts: [['1993', 'dibināšanas gads'], [`${YEARS}+`, 'gadi grāmatvedībā'], ['3 in 1', 'grāmatvedis, jurists, revidents'], ['LV · RU', 'saziņas valodas']],
     svcEyebrow: 'Pakalpojumi', svcTitle: 'Viss uzņēmuma finanšu darbam vienuviet',
-    svcLead: 'Grāmatvedība, juridiskie jautājumi un revīzija — saskaņoti, bez starpniekiem un liekas sarakstes.',
+    svcLead: 'Grāmatvedība, juridiskie jautājumi, revīzija un IT — saskaņoti, bez starpniekiem un liekas sarakstes.',
     whyEyebrow: 'Kāpēc NIKA LAT', whyTitle: 'Mēs pazīstam grāmatvedību no iekšpuses',
     why: [
       ['Pašu programmatūra', 'Kopš 1993. gada izstrādājam un izplatām grāmatvedības komplektu “NIKA LAT”. Tāpēc uzskaite pie mums ir sistemātiska un precīza.'],
@@ -228,7 +230,7 @@ P.home = (lang) => {
     stamp: ['с', '1993'],
     facts: [['1993', 'год основания'], [`${YEARS}+`, 'лет в бухгалтерии'], ['3 в 1', 'бухгалтер, юрист, ревизор'], ['LV · RU', 'языки общения']],
     svcEyebrow: 'Услуги', svcTitle: 'Все для финансовой работы компании в одном месте',
-    svcLead: 'Бухгалтерия, юридические вопросы и аудит — согласованно, без посредников и лишней переписки.',
+    svcLead: 'Бухгалтерия, юридические вопросы, аудит и IT — согласованно, без посредников и лишней переписки.',
     whyEyebrow: 'Почему NIKA LAT', whyTitle: 'Мы знаем бухгалтерию изнутри',
     why: [
       ['Собственные программы', 'С 1993 года мы разрабатываем и распространяем бухгалтерский комплекс «NIKA LAT». Поэтому учет у нас системный и точный.'],
@@ -265,7 +267,7 @@ P.home = (lang) => {
 
 <section class="section"><div class="container">
   <div class="section-head reveal"><span class="eyebrow">${x.svcEyebrow}</span><h2>${x.svcTitle}</h2><p class="lead">${x.svcLead}</p></div>
-  <div class="grid grid--4">${['accounting', 'legal', 'audit'].map((k) => areaCard(lang, from, k)).join('')}${softwareCard(lang, from)}</div>
+  <div class="grid grid--3">${AREAS.map((k) => areaCard(lang, from, k)).join('')}${softwareCard(lang, from, true)}</div>
 </div></section>
 
 <section class="section section--paper"><div class="container split split--wide">
@@ -291,9 +293,9 @@ P.services = (lang) => {
   const from = fileOf(lang, slug);
   const lv = lang === 'lv';
   const title = lv ? 'Pakalpojumi' : 'Услуги';
-  const body = `${pageHero(lang, slug, lv ? 'Pakalpojumi uzņēmumiem' : 'Услуги для бизнеса', lv ? 'Izvēlieties nepieciešamo virzienu vai apvienojiet vairākus — grāmatvedība, juridiskie jautājumi un revīzija strādā saskaņoti.' : 'Выберите нужное направление или объедините несколько — бухгалтерия, юридические вопросы и аудит работают согласованно.')}
+  const body = `${pageHero(lang, slug, lv ? 'Pakalpojumi uzņēmumiem' : 'Услуги для бизнеса', lv ? 'Izvēlieties nepieciešamo virzienu vai apvienojiet vairākus — grāmatvedība, juridiskie jautājumi, revīzija un IT strādā saskaņoti.' : 'Выберите нужное направление или объедините несколько — бухгалтерия, юридические вопросы, аудит и IT работают согласованно.')}
 <section class="section"><div class="container">
-  ${['accounting', 'legal', 'audit'].map((k) => {
+  ${AREAS.map((k) => {
     const a = areas[k][lang];
     return `<div class="split reveal" style="padding-block:40px;border-bottom:1px solid var(--nl-line)">
       <div><span class="card__icon">${I[areas[k].icon]}</span><h2 style="font-size:2rem">${a.title}</h2><p class="lead">${a.short}</p><a class="btn btn--ghost" href="${href(from, lang, route(k).slug)}">${t[lang].more} ${I.arrow}</a></div>
@@ -305,7 +307,7 @@ P.services = (lang) => {
   </div>
 </div></section>
 ${ctaBand(lang, slug)}`;
-  return { title: `${title} — NIKA LAT`, desc: lv ? 'Grāmatvedības, juridiskie un zvērināta revidenta pakalpojumi uzņēmumiem Rīgā. Tekošā uzskaite, VID atskaites, gada pārskats, uzņēmumu reģistrācija.' : 'Бухгалтерские, юридические услуги и присяжный ревизор для компаний в Риге. Текущий учет, отчеты VID, годовой отчет, регистрация предприятий.', body };
+  return { title: `${title} — NIKA LAT`, desc: lv ? 'Grāmatvedības, juridiskie un zvērināta revidenta pakalpojumi uzņēmumiem Rīgā. Tekošā uzskaite, VID atskaites, gada pārskats, uzņēmumu reģistrācija, mājaslapas un IT atbalsts.' : 'Бухгалтерские, юридические услуги и присяжный ревизор для компаний в Риге. Текущий учет, отчеты VID, годовой отчет, регистрация предприятий, сайты и IT-поддержка.', body };
 };
 
 function areaPage(key) {
@@ -314,21 +316,24 @@ function areaPage(key) {
     const from = fileOf(lang, slug);
     const a = areas[key][lang];
     const lv = lang === 'lv';
-    const others = ['accounting', 'legal', 'audit'].filter((k) => k !== key);
+    const others = AREAS.filter((k) => k !== key);
     const body = `${pageHero(lang, slug, a.title, a.intro, t[lang].nav.services)}
 <section class="section"><div class="container split split--wide">
   <div class="reveal"><span class="eyebrow">${lv ? 'Ko mēs darām' : 'Что мы делаем'}</span><h2>${lv ? 'Pakalpojuma saturs' : 'Состав услуги'}</h2>
     <p class="muted">${lv ? 'Precīzu darbu apjomu un termiņus saskaņojam pēc iepazīšanās ar uzņēmumu.' : 'Точный объем работ и сроки согласуем после знакомства с компанией.'}</p>
-    <a class="btn btn--primary" href="${href(from, lang, 'pricing')}#quote">${t[lang].cta} ${I.arrow}</a></div>
-  <div class="grid grid--2">${a.items.map(([h, p]) => `<div class="card reveal"><span class="card__icon" style="width:40px;height:40px">${I.check}</span><h3 style="font-size:1.1rem">${h}</h3><p style="margin:0">${p}</p></div>`).join('')}</div>
+    <a class="btn btn--primary" href="${href(from, lang, 'pricing')}#quote">${a.cta || t[lang].cta} ${I.arrow}</a>${a.price ? `<p class="muted" style="margin-top:16px">${a.price}</p>` : ''}</div>
+  <div class="grid grid--2">${a.items.map(([h, p, list]) => `<div class="card reveal"><span class="card__icon" style="width:40px;height:40px">${I.check}</span><h3 style="font-size:1.1rem">${h}</h3><p style="margin:0${list ? ' 0 12px' : ''}">${p}</p>${list ? `<ul style="margin:0">${list.map((x) => `<li>${x}</li>`).join('')}</ul>` : ''}</div>`).join('')}</div>
 </div></section>
-<section class="section section--paper"><div class="container split">
+${a.why ? `<section class="section section--paper"><div class="container split split--wide">
+  <div class="reveal"><span class="eyebrow">${lv ? 'Kāpēc NIKA LAT' : 'Почему NIKA LAT'}</span><h2>${lv ? 'Grāmatvedība un IT vienās rokās' : 'Бухгалтерия и IT в одних руках'}</h2></div>
+  <div class="features">${a.why.map(([h, p], i) => `<div class="feature reveal"><span class="feature__num">0${i + 1}</span><div><h3>${h}</h3><p>${p}</p></div></div>`).join('')}</div>
+</div></section>` : `<section class="section section--paper"><div class="container split">
   <div class="reveal"><span class="eyebrow">${lv ? 'Kam piemērots' : 'Кому подходит'}</span><h2>${lv ? 'Kam šis pakalpojums noderēs' : 'Кому пригодится услуга'}</h2></div>
   <ul class="checklist reveal">${a.who.map((w) => `<li>${I.people}<span>${w}</span></li>`).join('')}</ul>
-</div></section>
+</div></section>`}
 <section class="section"><div class="container">
   <div class="section-head reveal"><span class="eyebrow">${lv ? 'Saistītie pakalpojumi' : 'Связанные услуги'}</span><h2>${lv ? 'Apvienojiet ar citiem virzieniem' : 'Объедините с другими направлениями'}</h2></div>
-  <div class="grid grid--3">${others.map((k) => areaCard(lang, from, k)).join('')}${softwareCard(lang, from)}</div>
+  <div class="grid grid--4">${others.map((k) => areaCard(lang, from, k)).join('')}${softwareCard(lang, from)}</div>
 </div></section>
 ${ctaBand(lang, slug)}`;
     return { title: `${a.title} — NIKA LAT`, desc: `${a.short} ${lv ? 'Rīgā, latviski un krieviski.' : 'В Риге, на латышском и русском.'}`, body };
@@ -337,6 +342,7 @@ ${ctaBand(lang, slug)}`;
 P.accounting = areaPage('accounting');
 P.legal = areaPage('legal');
 P.audit = areaPage('audit');
+P.it = areaPage('it');
 
 P.software = (lang) => {
   const slug = 'software';
@@ -400,7 +406,7 @@ P.pricing = (lang) => {
   const q = lv ? {
     h: 'Individuāls piedāvājums 2 minūtēs', lead: 'Atbildiet uz dažiem jautājumiem — mēs sagatavosim cenu jūsu uzņēmumam. Tas ir bez saistībām.',
     factorsT: 'No kā atkarīga cena', factors: [['Dokumentu apjoms', 'Rēķinu, bankas un kases operāciju skaits mēnesī.'], ['Darbinieki', 'Algu aprēķins un darbinieku atskaites.'], ['PVN statuss', 'PVN maksātājiem ir papildu deklarācijas.'], ['Papildu pakalpojumi', 'Juridiskais atbalsts, revīzija, konsultācijas.']],
-    s1: 'Kas jums nepieciešams?', svc: ['Grāmatvedība', 'Juridiskie pakalpojumi', 'Revidents', 'NIKA LAT programmas', 'Konsultācija'],
+    s1: 'Kas jums nepieciešams?', svc: ['Grāmatvedība', 'Juridiskie pakalpojumi', 'Revidents', 'IT pakalpojumi', 'NIKA LAT programmas', 'Konsultācija'],
     s2: 'Par uzņēmumu', form: 'Uzņēmuma forma', forms: ['SIA', 'Individuālais komersants', 'Pašnodarbinātais', 'Biedrība / nodibinājums', 'Vēl nav reģistrēts'],
     vat: 'PVN maksātājs', yesno: ['Jā', 'Nē', 'Nezinu'], docs: 'Dokumenti mēnesī', docsOpt: ['līdz 30', '30–100', '100–300', 'vairāk nekā 300'], emp: 'Darbinieku skaits', empOpt: ['0', '1–5', '6–20', 'vairāk nekā 20'],
     s3: 'Kontakti', name: 'Vārds', company: 'Uzņēmums', contact: 'Tālrunis vai e-pasts', langQ: 'Saziņas valoda', langs: ['Latviešu', 'Krievu'], msg: 'Komentārs (nav obligāti)',
@@ -409,7 +415,7 @@ P.pricing = (lang) => {
   } : {
     h: 'Индивидуальное предложение за 2 минуты', lead: 'Ответьте на несколько вопросов — мы подготовим цену для вашей компании. Без обязательств.',
     factorsT: 'От чего зависит цена', factors: [['Объем документов', 'Количество счетов, банковских и кассовых операций в месяц.'], ['Сотрудники', 'Расчет зарплаты и отчеты по сотрудникам.'], ['Статус НДС', 'Для плательщиков НДС — дополнительные декларации.'], ['Дополнительные услуги', 'Юридическая поддержка, аудит, консультации.']],
-    s1: 'Что вам нужно?', svc: ['Бухгалтерия', 'Юридические услуги', 'Ревизор', 'Программы NIKA LAT', 'Консультация'],
+    s1: 'Что вам нужно?', svc: ['Бухгалтерия', 'Юридические услуги', 'Ревизор', 'IT-услуги', 'Программы NIKA LAT', 'Консультация'],
     s2: 'О компании', form: 'Форма предприятия', forms: ['SIA', 'Индивидуальный коммерсант', 'Самозанятый', 'Общество / фонд', 'Еще не зарегистрирована'],
     vat: 'Плательщик НДС', yesno: ['Да', 'Нет', 'Не знаю'], docs: 'Документов в месяц', docsOpt: ['до 30', '30–100', '100–300', 'более 300'], emp: 'Число сотрудников', empOpt: ['0', '1–5', '6–20', 'более 20'],
     s3: 'Контакты', name: 'Имя', company: 'Компания', contact: 'Телефон или email', langQ: 'Язык общения', langs: ['Латышский', 'Русский'], msg: 'Комментарий (необязательно)',
@@ -503,8 +509,8 @@ P.contacts = (lang) => {
   const from = fileOf(lang, slug);
   const lv = lang === 'lv';
   const f = lv
-    ? { name: 'Vārds', contact: 'Tālrunis vai e-pasts', topic: 'Tēma', topics: ['Grāmatvedība', 'Juridiskie pakalpojumi', 'Revidents', 'NIKA LAT programmas', 'Cits'], msg: 'Ziņa', send: 'Sagatavot vēstuli', subject: 'Ziņa no mājaslapas', ok: 'Vēstule sagatavota jūsu e-pasta programmā.', note: 'Atvērsies jūsu e-pasta programma.' }
-    : { name: 'Имя', contact: 'Телефон или email', topic: 'Тема', topics: ['Бухгалтерия', 'Юридические услуги', 'Ревизор', 'Программы NIKA LAT', 'Другое'], msg: 'Сообщение', send: 'Подготовить письмо', subject: 'Сообщение с сайта', ok: 'Письмо подготовлено в вашей почтовой программе.', note: 'Откроется ваша почтовая программа.' };
+    ? { name: 'Vārds', contact: 'Tālrunis vai e-pasts', topic: 'Tēma', topics: ['Grāmatvedība', 'Juridiskie pakalpojumi', 'Revidents', 'IT pakalpojumi', 'NIKA LAT programmas', 'Cits'], msg: 'Ziņa', send: 'Sagatavot vēstuli', subject: 'Ziņa no mājaslapas', ok: 'Vēstule sagatavota jūsu e-pasta programmā.', note: 'Atvērsies jūsu e-pasta programma.' }
+    : { name: 'Имя', contact: 'Телефон или email', topic: 'Тема', topics: ['Бухгалтерия', 'Юридические услуги', 'Ревизор', 'IT-услуги', 'Программы NIKA LAT', 'Другое'], msg: 'Сообщение', send: 'Подготовить письмо', subject: 'Сообщение с сайта', ok: 'Письмо подготовлено в вашей почтовой программе.', note: 'Откроется ваша почтовая программа.' };
   const body = `${pageHero(lang, slug, lv ? 'Sazināties ar mums' : 'Связаться с нами', lv ? 'Atbildam latviski un krieviski. Pastāstiet par savu uzdevumu — vienosimies par nākamo soli.' : 'Отвечаем на латышском и русском. Расскажите о своей задаче — договоримся о следующем шаге.')}
 <section class="section section--ink"><div class="container split">
   <div class="reveal">
