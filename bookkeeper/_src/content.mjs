@@ -9,12 +9,14 @@ export const company = {
   tel: '+37129238232',
   email: 'nikalat@apollo.lv',
   city: 'Rīga',
-  street: 'Ozolciema iela 12 k-2 - 141',
-  postcode: 'LV-1058',
+  // Office where clients visit (confirmed by Slava 09.11.2026)
+  street: 'Kr. Barona iela 88/2-503',
+  postcode: 'LV-1001',
+  // Registered (legal) address from the VID licence
+  legalAddress: 'Ozolciema iela 12 k-2 - 141, Rīga, LV-1058',
   regNo: '40003123063',
   // VID licence for outsourced accountants (decision of 12.06.2023)
   licence: { no: 'AGL0001892', from: '13.06.2023', to: '12.06.2028' },
-  // Registered address is also the office where clients visit (confirmed 09.11.2026).
   // TODO(client): VAT number, opening hours.
   chatbase: '6PoXLGX5pvRJqOwgut3nX',
   siteUrl: 'https://slavakhl.github.io/total-web-projects/bookkeeper/',
