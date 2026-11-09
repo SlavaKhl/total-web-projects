@@ -9,7 +9,12 @@ export const company = {
   tel: '+37129238232',
   email: 'nikalat@apollo.lv',
   city: 'Rīga',
-  // TODO(client): office address, registration number, VAT number, opening hours, VID outsourcing licence no.
+  street: 'Ozolciema iela 12 k-2 - 141',
+  postcode: 'LV-1058',
+  regNo: '40003123063',
+  // VID licence for outsourced accountants (decision of 12.06.2023)
+  licence: { no: 'AGL0001892', from: '13.06.2023', to: '12.06.2028' },
+  // TODO(client): VAT number, opening hours; confirm the registered address is also where clients visit.
   chatbase: '6PoXLGX5pvRJqOwgut3nX',
   siteUrl: 'https://slavakhl.github.io/total-web-projects/bookkeeper/',
 };
@@ -195,6 +200,7 @@ export const faq = {
     ['Vai jūs sagatavojat gada pārskatu?', 'Jā, sastādām gada pārskatu, un, ja nepieciešams, nodrošinām arī zvērināta revidenta atzinumu.'],
     ['Vai palīdzat reģistrēt jaunu uzņēmumu?', 'Jā. Sagatavojam dokumentus Uzņēmumu reģistram un pēc tam varam uzsākt grāmatvedības apkalpošanu.'],
     ['Vai var iegādāties tikai jūsu grāmatvedības programmas?', 'Jā. NIKA LAT programmas var iegādāties atsevišķi, ar instalāciju, apmācību un ikmēneša atbalstu.'],
+    ['Vai jums ir ārpakalpojuma grāmatveža licence?', 'Jā. SIA “NIKA LAT” ir VID izsniegta licence ārpakalpojuma grāmatveža darbībai Nr. AGL0001892, spēkā no 13.06.2023 līdz 12.06.2028.'],
     ['Kā tiek aizsargāta mana uzņēmuma informācija?', 'Konfidencialitāte ir mūsu darba pamatprincips. Darbinieki apņemas neizpaust klientu komercinformāciju, un mēs ievērojam augstus ētikas standartus.'],
   ],
   ru: [
@@ -205,6 +211,7 @@ export const faq = {
     ['Вы составляете годовой отчет?', 'Да, составляем годовой отчет, а при необходимости обеспечиваем и заключение присяжного ревизора.'],
     ['Помогаете ли вы зарегистрировать новую компанию?', 'Да. Готовим документы для Регистра предприятий и после этого можем начать бухгалтерское обслуживание.'],
     ['Можно купить только ваши бухгалтерские программы?', 'Да. Программы NIKA LAT можно приобрести отдельно, с установкой, обучением и ежемесячной поддержкой.'],
+    ['Есть ли у вас лицензия внешнего бухгалтера?', 'Да. У SIA “NIKA LAT” есть выданная VID лицензия на деятельность внешнего бухгалтера № AGL0001892, действует с 13.06.2023 по 12.06.2028.'],
     ['Как защищена информация моей компании?', 'Конфиденциальность — основной принцип нашей работы. Сотрудники обязуются не разглашать коммерческую информацию клиентов, и мы соблюдаем высокие этические стандарты.'],
   ],
 };
