@@ -14,7 +14,8 @@ export const company = {
   regNo: '40003123063',
   // VID licence for outsourced accountants (decision of 12.06.2023)
   licence: { no: 'AGL0001892', from: '13.06.2023', to: '12.06.2028' },
-  // TODO(client): VAT number, opening hours; confirm the registered address is also where clients visit.
+  // Registered address is also the office where clients visit (confirmed 09.11.2026).
+  // TODO(client): VAT number, opening hours.
   chatbase: '6PoXLGX5pvRJqOwgut3nX',
   siteUrl: 'https://slavakhl.github.io/total-web-projects/bookkeeper/',
 };

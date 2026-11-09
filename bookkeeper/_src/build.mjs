@@ -510,7 +510,7 @@ P.contacts = (lang) => {
     <ul class="contact-list">
       <li><a href="tel:${C.tel}"><span class="ic">${I.phone}</span><span>${C.phone}<small>${lv ? 'Tālrunis' : 'Телефон'}</small></span></a></li>
       <li><a href="mailto:${C.email}"><span class="ic">${I.mail}</span><span>${C.email}<small>E-pasts / Email</small></span></a></li>
-      <li><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${C.street}, ${C.city}, ${C.postcode}`)}" target="_blank" rel="noopener"><span class="ic">${I.pin}</span><span>${C.street}, ${C.city}, ${C.postcode}<small>${lv ? 'Juridiskā adrese' : 'Юридический адрес'}</small></span></a></li>
+      <li><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${C.street}, ${C.city}, ${C.postcode}`)}" target="_blank" rel="noopener"><span class="ic">${I.pin}</span><span>${C.street}, ${C.city}, ${C.postcode}<small>${lv ? 'Birojs — klientu pieņemšana' : 'Офис — прием клиентов'}</small></span></a></li>
       <li><a href="${href(from, lang, 'about')}"><span class="ic">${I.shield}</span><span>${lv ? 'VID licence' : 'Лицензия VID'} ${C.licence.no}<small>${lv ? `Reģ. Nr. ${C.regNo} · licence spēkā līdz ${C.licence.to}` : `Рег. № ${C.regNo} · лицензия до ${C.licence.to}`}</small></span></a></li>
     </ul>
     <p>${lv ? 'Pēc zvana vai vēstules vienosimies par tikšanos klātienē vai attālināti.' : 'После звонка или письма договоримся о встрече лично или удаленно.'}</p>
