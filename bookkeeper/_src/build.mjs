@@ -53,7 +53,8 @@ function layout({ lang, slug, title, desc, body, schema }) {
   const ld = {
     '@context': 'https://schema.org', '@type': 'AccountingService', name: C.name, url: C.siteUrl,
     telephone: C.phone, email: C.email, foundingDate: C.founded, areaServed: 'LV',
-    address: { '@type': 'PostalAddress', addressLocality: 'Rīga', addressCountry: 'LV' },
+    address: { '@type': 'PostalAddress', streetAddress: C.street, addressLocality: 'Rīga', postalCode: C.postcode, addressCountry: 'LV' },
+    taxID: C.regNo, hasCredential: { '@type': 'EducationalOccupationalCredential', name: `VID licence ${C.licence.no}`, recognizedBy: { '@type': 'GovernmentOrganization', name: 'Valsts ieņēmumu dienests' } },
     knowsLanguage: ['lv', 'ru'], logo: C.siteUrl + 'assets/logo.svg',
   };
   const footerSvc = ['accounting', 'legal', 'audit', 'software'].map((k) => `<li><a href="${href(from, lang, route(k).slug)}">${L.nav[k]}</a></li>`).join('');
@@ -116,7 +117,10 @@ ${body}
       <div><h3>${L.footerCols[2]}</h3><ul>
         <li><a href="tel:${C.tel}">${C.phone}</a></li>
         <li><a href="mailto:${C.email}">${C.email}</a></li>
-        <li>${C.city}, Latvija</li>
+        <li>${C.street}, ${C.city}, ${C.postcode}</li>
+        <li>${lang === 'lv' ? 'Jur. adrese' : 'Юр. адрес'}: ${C.legalAddress}</li>
+        <li>${lang === 'lv' ? 'Reģ. Nr.' : 'Рег. №'} ${C.regNo}</li>
+        <li>${lang === 'lv' ? 'VID licence' : 'Лицензия VID'} ${C.licence.no}</li>
       </ul></div>
     </div>
     <div class="footer__bottom">
@@ -196,7 +200,7 @@ P.home = (lang) => {
     h1: 'Grāmatvedība, uz kuru <em>var paļauties</em>.',
     lead: `Ikdienas uzskaite, VID atskaites, gada pārskati un juridiskais atbalsts — latviski un krieviski. ${YEARS} gadu pieredze un pašu izstrādāts grāmatvedības programmu komplekss.`,
     second: 'Mūsu pakalpojumi',
-    note: 'Konfidencialitāte un augsti ētikas standarti',
+    note: `VID licence ārpakalpojuma grāmatveža darbībai Nr. ${C.licence.no}`,
     ledger: ['Šī mēneša uzskaite', 'Kārtībā', [['Dokumenti saņemti', 'bankas izraksti, rēķini'], ['PVN deklarācija', 'sagatavota VID EDS'], ['Algu aprēķins', 'darbinieku atskaites'], ['Gada pārskats', 'plānots']]],
     stamp: ['kopš', '1993'],
     facts: [['1993', 'dibināšanas gads'], [`${YEARS}+`, 'gadi grāmatvedībā'], ['3 in 1', 'grāmatvedis, jurists, revidents'], ['LV · RU', 'saziņas valodas']],
@@ -219,7 +223,7 @@ P.home = (lang) => {
     h1: 'Бухгалтерия, на которую <em>можно положиться</em>.',
     lead: `Текущий учет, отчеты в VID, годовые отчеты и юридическая поддержка — на латышском и русском. ${YEARS} лет опыта и собственный программный комплекс для бухгалтерии.`,
     second: 'Наши услуги',
-    note: 'Конфиденциальность и высокие этические стандарты',
+    note: `Лицензия VID на деятельность внешнего бухгалтера № ${C.licence.no}`,
     ledger: ['Учет этого месяца', 'В порядке', [['Документы получены', 'выписки банка, счета'], ['Декларация НДС', 'подготовлена в VID EDS'], ['Расчет зарплаты', 'отчеты по сотрудникам'], ['Годовой отчет', 'запланирован']]],
     stamp: ['с', '1993'],
     facts: [['1993', 'год основания'], [`${YEARS}+`, 'лет в бухгалтерии'], ['3 в 1', 'бухгалтер, юрист, ревизор'], ['LV · RU', 'языки общения']],
@@ -382,6 +386,7 @@ P.about = (lang) => {
   <ol class="timeline reveal">
     <li><b>1993</b><p>${lv ? '31. martā dibināta SIA “NIKA LAT”. Sākta grāmatvedības pakalpojumu sniegšana un programmu kompleksa “NIKA LAT” izplatīšana.' : '31 марта основана SIA “NIKA LAT”. Начато оказание бухгалтерских услуг и распространение программного комплекса «NIKA LAT».'}</p></li>
     <li><b>2013–2014</b><p>${lv ? 'Projektā “Partnerība biznesa konkurētspējai” (ESF līdzfinansējums) darbinieki apguva 200 stundu programmu “Praktiskā grāmatvedība atbilstoši Latvijas un starptautiskiem normatīviem aktiem”.' : 'В проекте «Partnerība biznesa konkurētspējai» (софинансирование ESF) сотрудники прошли 200-часовую программу «Практическая бухгалтерия по нормативным актам Латвии и международным стандартам».'}</p></li>
+    <li><b>2023</b><p>${lv ? `VID izsniedz licenci ārpakalpojuma grāmatveža darbībai Nr. ${C.licence.no} (spēkā līdz ${C.licence.to}).` : `VID выдает лицензию на деятельность внешнего бухгалтера № ${C.licence.no} (действует до ${C.licence.to}).`}</p></li>
     <li><b>${new Date().getFullYear()}</b><p>${lv ? 'Grāmatvedība, juridiskie un zvērināta revidenta pakalpojumi, kā arī NIKA LAT programmas — latviski un krieviski.' : 'Бухгалтерия, юридические услуги и присяжный ревизор, а также программы NIKA LAT — на латышском и русском.'}</p></li>
   </ol>
 </div></section>
@@ -495,6 +500,7 @@ ${ctaBand(lang, slug)}`;
 
 P.contacts = (lang) => {
   const slug = 'contacts';
+  const from = fileOf(lang, slug);
   const lv = lang === 'lv';
   const f = lv
     ? { name: 'Vārds', contact: 'Tālrunis vai e-pasts', topic: 'Tēma', topics: ['Grāmatvedība', 'Juridiskie pakalpojumi', 'Revidents', 'NIKA LAT programmas', 'Cits'], msg: 'Ziņa', send: 'Sagatavot vēstuli', subject: 'Ziņa no mājaslapas', ok: 'Vēstule sagatavota jūsu e-pasta programmā.', note: 'Atvērsies jūsu e-pasta programma.' }
@@ -505,7 +511,9 @@ P.contacts = (lang) => {
     <ul class="contact-list">
       <li><a href="tel:${C.tel}"><span class="ic">${I.phone}</span><span>${C.phone}<small>${lv ? 'Tālrunis' : 'Телефон'}</small></span></a></li>
       <li><a href="mailto:${C.email}"><span class="ic">${I.mail}</span><span>${C.email}<small>E-pasts / Email</small></span></a></li>
-      <li><a href="https://www.google.com/maps/search/?api=1&query=Riga" target="_blank" rel="noopener"><span class="ic">${I.pin}</span><span>${C.city}, Latvija<small>${lv ? 'Adresi precizēsim pēc pieprasījuma' : 'Адрес уточним по запросу'}</small></span></a></li>
+      <li><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${C.street}, ${C.city}, ${C.postcode}`)}" target="_blank" rel="noopener"><span class="ic">${I.pin}</span><span>${C.street}, ${C.city}, ${C.postcode}<small>${lv ? 'Birojs — klientu pieņemšana' : 'Офис — прием клиентов'}</small></span></a></li>
+      <li><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(C.legalAddress)}" target="_blank" rel="noopener"><span class="ic">${I.pin}</span><span>${C.legalAddress}<small>${lv ? 'Juridiskā adrese' : 'Юридический адрес'}</small></span></a></li>
+      <li><a href="${href(from, lang, 'about')}"><span class="ic">${I.shield}</span><span>${lv ? 'VID licence' : 'Лицензия VID'} ${C.licence.no}<small>${lv ? `Reģ. Nr. ${C.regNo} · licence spēkā līdz ${C.licence.to}` : `Рег. № ${C.regNo} · лицензия до ${C.licence.to}`}</small></span></a></li>
     </ul>
     <p>${lv ? 'Pēc zvana vai vēstules vienosimies par tikšanos klātienē vai attālināti.' : 'После звонка или письма договоримся о встрече лично или удаленно.'}</p>
   </div>
